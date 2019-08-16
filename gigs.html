@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Literaturnacht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/popup.css">
+
+</head>
+
+<body>
+  <input type="hidden" id="storeid" value="0" />
+  
+  <nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="venues.html">Venues</a></li>
+        <li class="active"><a href="gigs.html">Gigs</a></li>
+        <li><a href="sale.html">Ticketsale</a></li>
+       <li class="pointer"><a onclick="logoutClicked()" >Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+  
+
+  <div class="container">
+    <div id="table">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Gigs</h2>
+      </div>
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-primary" onclick="gigOpenForm();">
+          Add
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <table id="gigTable" class="table table-bordered
+                    table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Edit</th>
+              <th>Number</th>
+              <th>Title</th>
+              <th>Performer</th>
+              <th>Venue</th>
+              <th>Fee</th>
+              <th>Tickets Left</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    </div>
+    
+    <div class="form-popup" id="gigForm">
+      <div class="container">
+        <div class="form-field">
+          <label for="houseNo">No.</label>
+          <input type="text" id="houseNo" class="form-control" autofocus/>
+        </div>
+        <div class="form-field">
+          <label for="titlet">Title</label>
+          <input type="text" id="title" class="form-control" />
+        </div>
+        <div class="form-field">
+            <label for="gName">Performer</label>
+            <input type="text" id="gName" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gEmail">Email</label>
+          <input type="text" id="gEmail" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gPhone">Phone</label>
+          <input type="text" id="gPhone" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gAddress">Venue</label>
+          <select id="gAddress" class="form-control" >
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="feeEur">Fee</label>
+          <input type="text" id="feeEur" class="form-control" />
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" id="gigUpdateButton" class="btn btn-primary" onclick="gigUpdateClick();">
+              Add
+            </button>
+            <button type="button" id="gigCloseButton" class="btn btn-primary" onclick="gigFormClear();">
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/libs/jquery-3.3.1.js"></script>
+
+  <script src="/js/libs/bootstrap.min.js"></script>
+
+  <script src="/js/libs/moment.js"></script>
+
+  <script src="/js/libs/mustache.js"></script>
+
+  <script src="/js/libs/deparam.js"></script>
+
+  <script src="/js/gigs.js"></script>
+
+  <script src="/js/commonFunctions.js"></script>
+
+
+
+
+</body>
+
+</html>
+
+<p></p>

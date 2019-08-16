@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Literaturnacht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/popup.css">
+
+</head>
+
+<body>
+  <input type="hidden" id="storeid" value="0" />
+  
+  <nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="venues.html">Venues</a></li>
+        <li><a href="gigs.html">Gigs</a></li>
+        <li class="active"><a href="sale.html">Ticketsale</a></li>
+        <li class="pointer"><a onclick="logoutClicked()" >Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+  
+
+  <div class="container">
+    <div id="table">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Ticketsale</h2>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <table id="gigTable" class="table table-bordered
+                    table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Title</th>
+              <th>Performer</th>
+              <th>Venue</th>
+              <th>Tickets Left</th>
+              <th>Buy</th>
+              <th>Refund</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    </div>
+    
+    <div class="form-popup" id="saleForm">
+      <div class="container">
+        <h2>
+          Tickets for House No. <a id="houseNo"></a> 
+        </h2>
+        <h2>
+          <a id="title"></a>
+        </h2>
+        <h2>
+          performed by
+          <a id="gName"></a> 
+        </h2>
+        <h2>
+          for €
+          <a id="feeEur"></a> 
+          each
+        </h2>
+
+        <div>
+            <label for="sel1">Choose amount</label>
+            <select class="form-control" id="amount">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" id="gigUpdateButton" class="btn btn-primary" onclick="buyClick();">
+              Buy
+            </button>
+            <button type="button" id="userCloseButton" class="btn btn-primary" onclick="saleFormClear();">
+                Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/libs/jquery-3.3.1.js"></script>
+
+  <script src="/js/libs/bootstrap.min.js"></script>
+
+  <script src="/js/libs/moment.js"></script>
+
+  <script src="/js/libs/mustache.js"></script>
+
+  <script src="/js/libs/deparam.js"></script>
+
+  <script src="/js/sale.js"></script>
+
+  <script src="/js/commonFunctions.js"></script>
+
+
+
+
+</body>
+
+</html>
+
+<p></p>
