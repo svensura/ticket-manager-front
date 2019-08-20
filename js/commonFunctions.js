@@ -1,5 +1,7 @@
-// alphabetical sort function
+
 const API_URL = 'http://192.168.1.29:3001'
+//const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+// alphabetical sort function
 var sort_by = function(field, reverse, primer){
 
     var key = primer ? 

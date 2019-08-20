@@ -1,5 +1,6 @@
 $(document).ready(function () {
   const API_URL = 'http://192.168.1.29:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
   // take focus away
@@ -71,6 +72,13 @@ function gigBuildTableRow(gig) {
         "<td>" + gig.venue.address + "</td>" +
         "<td class='text-right'>" + gig.feeEur + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
+        "<td>" +
+        "<button type='button' " +
+        "onclick='gigSendList(this);' " +
+        "class='btn btn-default' " +
+        "data-id='" + gig._id + "'>" +
+        "<span class='glyphicon glyphicon-envelope' />" +
+        "</button>" + "</td>" +
         "<td>" +
         "<button type='button' " +
         "onclick='gigDelete(this);' " +
@@ -195,7 +203,7 @@ function gigUpdateClick() {
       gig.performer.phone = $("#gPhone").val();
       gig.venue = $("#gAddress").val();
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
-      console.log(gig.feeEur)
+      //console.log(gig.feeEur)
       if ($("#gigUpdateButton").text().trim() == "Add") {
         gigAdd(gig);
       }
@@ -313,6 +321,35 @@ function addClick() {
   
 }
 
+// Send Paypal-List with sold Tickets
+function gigSendList(ctl) {
+  $(this).blur();
+  if (confirm("Are you sure ?")){
+    var token = window.localStorage.getItem('token');
+
+    var id = $(ctl).data("id");
+
+    // Call Web API to delete a gig
+    $.ajax({
+      //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${id}`,
+      "url": `${API_URL}/gigs_list/${id}`,
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        },
+      "processData": false,
+      "data": ''
+      ,
+      success: function (response) {
+        window.alert(response)
+      },
+      error: function (request, message, error) {
+        handleException(request, message, error);
+      }
+    });
+  }
+ }
 
  // Delete gig from <table>
  function gigDelete(ctl) {
