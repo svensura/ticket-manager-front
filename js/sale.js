@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(() => {
   const API_URL = 'http://192.168.1.29:3001'
   //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
   // take focus away
-  document.addEventListener('click', function(e) { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
+  document.addEventListener('click', (e) => { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
 
 
@@ -21,11 +21,11 @@ gigsList = () => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (gigs) {
+    success: (gigs) => {
       gigs.sort(sort_by('houseNo'));
       gigListSuccess(gigs);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
@@ -53,7 +53,7 @@ gigAddRow = (gig) => {
 }
 
 // Build a <tr> for a row of table data
-function gigBuildTableRow(gig) {
+gigBuildTableRow = (gig) => {
   var ret = "<tr>" +
         "<td class='text-right'>" + gig.houseNo + "</td>" +
         "<td>" + gig.title + "</td>" +
@@ -81,7 +81,7 @@ function gigBuildTableRow(gig) {
   return ret;
 }
 
-function gigGetBuy(ctl) {
+gigGetBuy = (ctl) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -99,10 +99,10 @@ function gigGetBuy(ctl) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (gig) {
+    success: (gig) => {
       gigToFieldsBuy(gig);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
@@ -133,13 +133,13 @@ function gigGetRefund(ctl) {
       }   
       
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 } 
 
-function gigToFieldsBuy(gig) {
+gigToFieldsBuy = (gig) => {
   $("#houseNo").text(gig.houseNo);
   $("#title").text('"' + gig.title + '"');
   $("#gName").text(gig.performer.name);
@@ -149,7 +149,7 @@ function gigToFieldsBuy(gig) {
 
 
 
-function gigBuy(amount) {
+gigBuy = (amount) => {
 
 const id = $("#storeid").val();
 const data = new Object()
@@ -169,11 +169,11 @@ console.log(data)
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function () {
+    success: () => {
       alert(`You successfully ${amount<0?'refunded ' + (amount * -1):'bought ' + amount} ticket ${amount<0?'':'(s)'}`)
       location.reload();
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       if (request.status == 406) {
           alert(request.responseText);
       } else {
@@ -194,6 +194,7 @@ function buyClick() {
     }   
   
 }
+
 // Handle click event on Refund button
 function refundClick() {
   const amount = -1;
@@ -204,24 +205,20 @@ function refundClick() {
   
 }
 
-
-
-
 // Clear form fields
-function saleFormClear() {
+saleFormClear = () => {
   $("#amount").empty;
-
   gigCloseForm()
 }
 
-function gigOpenBuyForm() {
+gigOpenBuyForm = () => {
   $("#table").hide()
   $("#navbar").hide()
   document.getElementById("saleForm").style.display = "block";
   $("#amount").focus()
 }
 
-function gigCloseForm() {
+gigCloseForm = () => {
   $("#table").show()
   $("#navbar").show()
   $("#amount").val(1)

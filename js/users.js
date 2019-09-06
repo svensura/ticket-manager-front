@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(() => {
   //const API_URL = 'http://192.168.1.29:3001'
   const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   usersList();
 
   // take focus away
-  document.addEventListener('click', function(e) { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
+  document.addEventListener('click', (e) => { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
 
 // USER_FUNCTIONS
@@ -21,11 +21,11 @@ usersList = () => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (users) {
+    success: (users) => {
       users.sort(sort_by('name', false, function(a){return a.toUpperCase()}));
       userListSuccess(users);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
@@ -53,7 +53,7 @@ userAddRow = (user) => {
 }
 
 // Build a <tr> for a row of table data
-function userBuildTableRow(user) {
+userBuildTableRow = (user) => {
   var ret = "<tr>" +
       "<td>" +
         "<button type='button' " +
@@ -79,7 +79,7 @@ function userBuildTableRow(user) {
   return ret;
 }
 
-function userGet(ctl) {
+userGet = (ctl) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -99,19 +99,19 @@ function userGet(ctl) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (user) {
+    success: (user) => {
       userToFields(user);
 
       // Change Update Button Text
       $("#userUpdateButton").text("Update");
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function userToFields(user) {
+userToFields = (user) => {
   $("#username").val(user.name);
   $("#email").val(user.email);
   $("#phone").val(user.phone);
@@ -119,31 +119,27 @@ function userToFields(user) {
 }
 
 // Handle click event on Update button
-function userUpdateClick() {
-      // Build user object from inputs
-      user = new Object();
-      user._id = $("#storeid").val();
-      user.name = $("#username").val();
-      user.email = $("#email").val();
-      user.phone = $("#phone").val();
-      user.password = $("#password").val();
-
-      if ($("#userUpdateButton").text().trim() == "Add") {
-        userAdd(user);
-      }
-      else {
-        userUpdate(u^ser);
-      }
-    }
+userUpdateClick = () => {
+  // Build user object from inputs
+  user = new Object();
+  user._id = $("#storeid").val();
+  user.name = $("#username").val();
+  user.email = $("#email").val();
+  user.phone = $("#phone").val();
+  user.password = $("#password").val();
+  if ($("#userUpdateButton").text().trim() == "Add") {
+    userAdd(user);
+  } else {
+    userUpdate(u^ser);
+  }
+}
 
 function addClick() {
   formClear();
 }
 
 function userUpdate(user) {
-
   var token = window.localStorage.getItem('token');
-
   data = new Object();
   data.name = user.name
   data.email = user.email
@@ -168,20 +164,20 @@ function userUpdate(user) {
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function (user) {
+    success: (user) => {
     userUpdateSuccess(user);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function userUpdateSuccess(user) {
+fuserUpdateSuccess = (user) => {
   userUpdateInTable(user);
 }
 
-function userAdd(user) {
+userAdd = (user) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -189,7 +185,7 @@ function userAdd(user) {
   data.name = user.name
   data.email = user.email
   data.phone = user.phone
- if (user.password.length > 6) {
+  if (user.password.length > 6) {
       data.password = user.password
   } else {
     window.alert("Password is required and must be at least 7 characters long")
@@ -207,22 +203,22 @@ function userAdd(user) {
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function (reply) {
+    success: (reply) => {
       userAddSuccess(reply.user);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function userAddSuccess(user) {
+userAddSuccess = (user) => {
   userAddRow(user);
   userFormClear();
 }
 
 // Update user in <table>
-function userUpdateInTable(user) {
+userUpdateInTable= (user) => {
   // Find User in <table>
   var row = $("#userTable button[data-id='" + user._id + "']")
             .parents("tr")[0];
@@ -260,10 +256,10 @@ function userUpdateInTable(user) {
       "processData": false,
       "data": ''
       ,
-      success: function (user) {
+      success: (user) => {
         $(ctl).parents("tr").remove();
       },
-      error: function (request, message, error) {
+      error: (request, message, error) => {
         handleException(request, message, error);
       }
     });
@@ -273,7 +269,7 @@ function userUpdateInTable(user) {
 
 
 // Clear form fields
-function userFormClear() {
+userFormClear = () => {
   $("#username").val("");
   $("#email").val("");
   $("#phone").val("");
@@ -281,14 +277,14 @@ function userFormClear() {
   userCloseForm()
 }
 
-function userOpenForm() {
+userOpenForm = () => {
   $("#table").hide()
   $("#navbar").hide()
   document.getElementById("userForm").style.display = "block";
   $("#username").focus()
 }
 
-function userCloseForm() {
+userCloseForm = () => {
   $("#table").show()
   $("#navbar").show()
   document.getElementById("userForm").style.display = "none";

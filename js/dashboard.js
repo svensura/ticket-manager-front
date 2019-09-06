@@ -1,4 +1,4 @@
-$(document).ready(function async () {
+$(document).ready( async () => {
   //const API_URL = 'http://192.168.1.29:3001'
   const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   console.log('HELLO')
@@ -9,7 +9,7 @@ $(document).ready(function async () {
   prevInfoWindow = false;
   mapLoad()
   
-  function mapLoad() { // if you need any param
+  mapLoad = () => { // if you need any param
       mapWaitCount++;
       // if api is loaded
       if(typeof google != 'undefined') {
@@ -20,7 +20,7 @@ $(document).ready(function async () {
       // try again if until maximum allowed attempt
       else if(mapWaitCount < mapWaitMax) {
           console.log('Waiting attempt #' + mapWaitCount); // just log
-          setTimeout(function() { mapLoad(); }, 1000);
+          setTimeout(() => { mapLoad(); }, 1000);
       }
       // if failed after maximum attempt, not mandatory
       else if(mapWaitCount >= mapWaitMax) {
@@ -29,10 +29,8 @@ $(document).ready(function async () {
   }
 
 
-
-
   // take focus away
-  document.addEventListener('click', function(e) { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
+  document.addEventListener('click', (e) => { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
 
 
@@ -48,10 +46,10 @@ markersList = () => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (gigs) {
+    success: (gigs) => {
       drop(gigs)
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
@@ -59,7 +57,7 @@ markersList = () => {
 
 
 
-  const myStyles =[
+  const myStyles = [
   {
       featureType: "poi",
       elementType: "labels",
@@ -77,23 +75,22 @@ markersList = () => {
   var markers = [];
   var map;
 
-  function initMap() {
+  initMap = () => {
     map = new google.maps.Map(document.getElementById('map'), myOptions);
     
 
     
   }
 
-  function drop(gigs) {
+  drop = (gigs) => {
     clearMarkers();
     var i = 0
     gigs.forEach( (gig) => {
-      console.log('ADDRESS', gig.venue.address)
-      console.log('COORDS', gig.venue.coords)
+      //console.log('ADDRESS', gig.venue.address)
+      //console.log('COORDS', gig.venue.coords)
       if (gig.venue.coords != null) {
         var lat = gig.venue.coords[0]
         var lng = gig.venue.coords[1]
-        console.log('MARKER', lat, lng)
         var newLatLng = {lat: lat, lng: lng};
         var contentString = '<div id="content">' + `<p>House No. ${gig.houseNo}<p/>` +
                                                   `<p>"${gig.title}"<p/>` +
@@ -109,7 +106,6 @@ markersList = () => {
         } else {
           colorString = '/images/greenHouse.png'
         }
-        console.log('RATIO', (gig.startSeats - gig.soldSeats)/gig.startSeats)
 
         addMarkerWithTimeout(newLatLng, i * 200, `House No. ${gig.houseNo}`, contentString, colorString);
       }
@@ -117,7 +113,7 @@ markersList = () => {
   });
   }
 
-  function addMarkerWithTimeout(position, timeout, title, contentString, colorString) {
+  addMarkerWithTimeout = (position, timeout, title, contentString, colorString) => {
     window.setTimeout(function() {
 
       var infowindow = new google.maps.InfoWindow({
@@ -142,7 +138,7 @@ markersList = () => {
     }, timeout);
   }
 
-  function clearMarkers() {
+  clearMarkers = () => {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
@@ -150,14 +146,7 @@ markersList = () => {
   }
 
  
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-}
+
 
   
   

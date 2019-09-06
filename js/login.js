@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(() => {
     //const API_URL = 'http://192.168.1.29:3001'
     const API_URL = 'https://sura-ticket-manager.herokuapp.com'
     formClear();
     
-    $("#but_submit").click(function(){
+    $("#but_submit").click(() => {
         
         var username = $("#txt_uname").val().trim();
         var password = $("#txt_pwd").val().trim();
@@ -19,7 +19,7 @@ $(document).ready(function(){
                 "processData": false,
                 "data": `{\n\t\"email\": \"${username}\",\n\t\"password\": \"${password}\"\n}`
                 ,
-                success: function (response) {
+                success: (response) => {
                     if (response.token) {
                         console.log(response.token)
                         window.localStorage.setItem('token', response.token)
@@ -28,32 +28,13 @@ $(document).ready(function(){
                         window.alert("Wrong email or password")
                     }    
                 },
-                error: function (request, message, error) {
+                error: (request, message, error) => {
                     handleException(request, message, error);
                   }
             });
         };
-
-
-            // $.ajax({
-            //     url:'http://192.168.1.29:3001/users/login',
-            //     type:'post',
-            //     data:{email:username,password:password},
-            //     success:function(response){
-            //         console.log(response);
-            //         // var msg = "";
-            //         // if(response == 1){
-            //         //     window.location = "home.php";
-            //         // }else{
-            //         //     msg = "Invalid username and password!";
-            //         // }
-            //         // $("#message").html(msg);
-            //     }
-            // });
-        
     });
-
-function formClear() {
+formClear = () => {
     $("#txt_uname").val("");
     $("#txt_pwd").val("");
     }

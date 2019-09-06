@@ -1,11 +1,11 @@
-$(document).ready(function () {
+$(document).ready(() => {
   //const API_URL = 'http://192.168.1.29:3001'
   const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   venuesList();
 
 
   // take focus away
-  document.addEventListener('click', function(e) { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
+  document.addEventListener('click', (e) => { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
 
 
@@ -23,11 +23,11 @@ venuesList = () => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (venues) {
+    success: (venues) => {
       venues.sort(sort_by('address', false, function(a){return a.toUpperCase()}));
       venueListSuccess(venues);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
@@ -55,7 +55,7 @@ venueAddRow = (venue) => {
 }
 
 // Build a <tr> for a row of table data
-function venueBuildTableRow(venue) {
+venueBuildTableRow = (venue) => {
   var ret = "<tr>" +
       "<td>" +
         "<button type='button' " +
@@ -88,7 +88,7 @@ function venueBuildTableRow(venue) {
   return ret;
 }
 
-function venueGet(ctl) {
+venueGet = (ctl) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -108,19 +108,19 @@ function venueGet(ctl) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (venue) {
+    success: (venue) => {
       venueToFields(venue);
 
       // Change Update Button Text
       $("#venueUpdateButton").text("Update");
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function venueToFields(venue) {
+venueToFields = (venue) => {
   $("#address").val(venue.address);
   $("#cName").val(venue.contact.name);
   $("#cEmail").val(venue.contact.email);
@@ -131,30 +131,28 @@ function venueToFields(venue) {
 }
 
 // Handle click event on Update button
-function venueUpdateClick() {
-       // Build venue object from inputs
-      venue = new Object();
-      contact = new Object();
-      venue._id = $("#storeid").val();
-      venue.address = $("#address").val();
-      venue.contact = contact;
-      venue.contact.name = $("#cName").val();
-      venue.contact.email= $("#cEmail").val();
-      venue.contact.phone = $("#cPhone").val();
-      venue.seats = $("#seats").val();
-      venue.active = $('#activeBox').prop('checked');
-      console.log('active:', venue.active)
-
-      if ($("#venueUpdateButton").text().trim() == "Add") {
-        venueAdd(venue);
-      }
-      else {
-        venueUpdate(venue);
-      }
-    }
+venueUpdateClick = () => {
+  // Build venue object from inputs
+  venue = new Object();
+  contact = new Object();
+  venue._id = $("#storeid").val();
+  venue.address = $("#address").val();
+  venue.contact = contact;
+  venue.contact.name = $("#cName").val();
+  venue.contact.email= $("#cEmail").val();
+  venue.contact.phone = $("#cPhone").val();
+  venue.seats = $("#seats").val();
+  venue.active = $('#activeBox').prop('checked');
+  console.log('active:', venue.active)
+  if ($("#venueUpdateButton").text().trim() == "Add") {
+    venueAdd(venue);
+  } else {
+    venueUpdate(venue);
+  }
+}
 
 
-function venueUpdate(venue) {
+venueUpdate = (venue) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -163,8 +161,6 @@ function venueUpdate(venue) {
   data.contact = venue.contact
   data.seats = venue.seats
   data.active = venue.active
-  
-
 
   // Call Web API to update venue
   $.ajax({
@@ -178,20 +174,20 @@ function venueUpdate(venue) {
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function (venue) {
+    success: (venue) => {
     venueUpdateSuccess(venue);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function venueUpdateSuccess(venue) {
+venueUpdateSuccess = (venue) => {
   venueUpdateInTable(venue);
 }
 
-function venueAdd(venue) {
+venueAdd = (venue) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -214,22 +210,22 @@ function venueAdd(venue) {
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function (venue) {
+    success: (venue) => {
       venueAddSuccess(venue);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function venueAddSuccess(venue) {
+venueAddSuccess = (venue) => {
   venueAddRow(venue);
   venueFormClear();
 }
 
 // Update venue in <table>
-function venueUpdateInTable(venue) {
+enueUpdateInTable = (venue) => {
   // Find Venue in <table>
   var row = $("#venueTable button[data-id='" + venue._id + "']")
             .parents("tr")[0];
@@ -243,12 +239,6 @@ function venueUpdateInTable(venue) {
 
   // Change Update Button Text
   $("#venueUpdateButton").text("Add");
-}
-
-// Handle click event on Add button
-function addClick() {
-  console.log('addClick');
-  
 }
 
 
@@ -283,7 +273,7 @@ function addClick() {
  }
 
 // Clear form fields
-function venueFormClear() {
+venueFormClear = () => {
   $("#address").val("");
   $("#cName").val("");
   $("#cEmail").val("");
@@ -294,14 +284,13 @@ function venueFormClear() {
   venueCloseForm()
 }
 
-function venueOpenForm() {
+venueOpenForm = () => {
   $("#table").hide()
   $("#navbar").hide()
   document.getElementById("venueForm").style.display = "block";
   $("#address").focus()
 }
-
-function venueCloseForm() {
+venueCloseForm = () => {
   $("#table").show()
   $("#navbar").show()
   document.getElementById("venueForm").style.display = "none";

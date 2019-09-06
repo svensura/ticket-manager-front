@@ -56,7 +56,7 @@ gigAddRow = (gig) => {
 }
 
 // Build a <tr> for a row of table data
-function gigBuildTableRow(gig) {
+gigBuildTableRow = (gig) => {
   var ret = "<tr>" +
       "<td>" +
         "<button type='button' " +
@@ -92,7 +92,7 @@ function gigBuildTableRow(gig) {
   return ret;
 }
 
-function gigGet(ctl) {
+gigGet = (ctl) => {
   
   var token = window.localStorage.getItem('token');
 
@@ -114,18 +114,18 @@ function gigGet(ctl) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (gig) {
+    success: (gig) => {
       gigToFields(gig);
       addressesToForm(workingAddress);
       // Change Update Button Text
       $("#gigUpdateButton").text("Update");
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 
-  function gigToFields(gig) {
+  gigToFields = (gig) => {
     $("#houseNo").val(gig.houseNo);
     $("#title").val(gig.title);
     $("#gName").val(gig.performer.name);
@@ -141,7 +141,7 @@ function gigGet(ctl) {
 
 
 // Call Web API to get a List of active Venues
-function addressesToForm(workingAddress) {
+addressesToForm = (workingAddress) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -153,11 +153,11 @@ function addressesToForm(workingAddress) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    success: function (venuesActive) {
+    success: (venuesActive) => {
       venuesActive.sort(sort_by('address', false, function(a){return a.toUpperCase()}));
       var addresses = []
       var venueIds = []
-      venuesActive.forEach(function (venue) {
+      venuesActive.forEach((venue) => {
         if(venue.active){        
           addresses.push(venue.address)
           venueIds.push(venue._id)
@@ -165,17 +165,17 @@ function addressesToForm(workingAddress) {
       })
       arrayToSelect(addresses, venueIds, 'gAddress', workingAddress);
     },
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 } 
 
-function arrayToSelect(array, values, selectId, match) {
+arrayToSelect = (array, values, selectId, match) => {
   var hasFound = false
   $("#" + selectId).empty()
   $.each(array, function(index, text) {
-    if (text == match){
+    if (text == match) {
       $("#" + selectId).append( $('<option selected="selected"></option>').val(values[index]).html(text) )
       hasFound = 'true'
     } else {
@@ -188,7 +188,7 @@ function arrayToSelect(array, values, selectId, match) {
 }
 
 // Handle click event on Update button
-function gigUpdateClick() {
+gigUpdateClick = () => {
       
        // Build gig object from inputs
       gig = new Object();
@@ -213,7 +213,7 @@ function gigUpdateClick() {
     }
 
 
-function gigUpdate(gig) {
+fgigUpdate = (gig) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -236,7 +236,7 @@ function gigUpdate(gig) {
     "processData": false,
     "data": `${JSON.stringify(data)}`
     ,
-    success: function (gig) {
+    success: (gig) => {
     gigUpdateSuccess(gig);
     },
     // error: function (request, message, error) {
@@ -246,13 +246,13 @@ function gigUpdate(gig) {
     //     handleException(request, message, error);
     //   }
     // }
-    error: function (request, message, error) {
+    error: (request, message, error) => {
       handleException(request, message, error);
     }
   });
 }
 
-function gigUpdateSuccess(gig) {
+gigUpdateSuccess = (gig) => {
 
   venue = new Object
   venue.address = $("#gAddress option:selected").text() 
@@ -261,7 +261,7 @@ function gigUpdateSuccess(gig) {
   gigUpdateInTable(gig);
 }
 
-function gigAdd(gig) {
+gigAdd = (gig) => {
 
  var token = window.localStorage.getItem('token');
 
@@ -293,13 +293,13 @@ function gigAdd(gig) {
   });
 }
 
-function gigAddSuccess(gig) {
+gigAddSuccess = (gig) => {
   gigAddRow(gig);
   gigFormClear();
 }
 
 // Update gig in <table>
-function gigUpdateInTable(gig) {
+gigUpdateInTable = (gig) => {
   // Find Gig in <table>
   var row = $("#gigTable button[data-id='" + gig._id + "']")
             .parents("tr")[0];
@@ -316,7 +316,7 @@ function gigUpdateInTable(gig) {
 }
 
 // Handle click event on Add button
-function addClick() {
+addClick = () => {
   console.log('addClick');
   
 }
@@ -341,10 +341,10 @@ function gigSendList(ctl) {
       "processData": false,
       "data": ''
       ,
-      success: function (response) {
+      success: (response) => {
         window.alert(response)
       },
-      error: function (request, message, error) {
+      error: (request, message, error)  => {
         handleException(request, message, error);
       }
     });
@@ -371,10 +371,10 @@ function gigSendList(ctl) {
       "processData": false,
       "data": ''
       ,
-      success: function (gig) {
+      success: (gig) => {
         $(ctl).parents("tr").remove();
       },
-      error: function (request, message, error) {
+      error: (request, message, error) => {
         handleException(request, message, error);
       }
     });
@@ -382,7 +382,7 @@ function gigSendList(ctl) {
  }
 
 // Clear form fields
-function gigFormClear() {
+gigFormClear = () =>  {
   $("#houseNo").val("");
   $("#title").val("");
   $("#gName").val("");
@@ -394,7 +394,7 @@ function gigFormClear() {
   gigCloseForm()
 }
 
-function gigOpenForm() {
+gigOpenForm = () => {
   $("#table").hide()
   $("#navbar").hide()
   document.getElementById("gigForm").style.display = "block";
@@ -402,7 +402,7 @@ function gigOpenForm() {
   $("#houseNo").focus()
 }
 
-function gigCloseForm() {
+gigCloseForm = () => {
   $("#table").show()
   $("#navbar").show()
   $("#gigUpdateButton").text("Add");
