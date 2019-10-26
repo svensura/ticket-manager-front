@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  //const API_URL = 'http://192.168.1.29:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
   // take focus away
@@ -17,7 +17,6 @@ gigsList = () => {
   var token = window.localStorage.getItem('token');
 
   $.ajax({
-    //"url": 'https://sura-ticket-manager.herokuapp.com/gigs',
     "url": `${API_URL}/gigs`,
     "method": "GET",
     "headers": {
@@ -107,7 +106,6 @@ gigGet = (ctl) => {
 
   // Call Web API to get a Gig
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${id}`,
     "url": `${API_URL}/gigs/${id}`,
     "method": "GET",
     "headers": {
@@ -146,7 +144,6 @@ addressesToForm = (workingAddress) => {
   var token = window.localStorage.getItem('token');
 
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/venues`,
     "url": `${API_URL}/venues`,
     "method": "GET",
     "headers": {
@@ -226,7 +223,6 @@ fgigUpdate = (gig) => {
 
   // Call Web API to update gig
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${gig._id}`,
     "url": `${API_URL}/gigs/${gig._id}`,
     "method": "PATCH",
     "headers": {
@@ -274,7 +270,6 @@ gigAdd = (gig) => {
 
   // Call Web API to add a new gig
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/gigs`,
     "url": `${API_URL}/gigs`,
     "method": "POST",
     "headers": {
@@ -331,7 +326,6 @@ function gigSendList(ctl) {
 
     // Call Web API to delete a gig
     $.ajax({
-      //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${id}`,
       "url": `${API_URL}/gigs_list/${id}`,
       "method": "POST",
       "headers": {
@@ -361,7 +355,6 @@ function gigSendList(ctl) {
 
     // Call Web API to delete a gig
     $.ajax({
-      //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${id}`,
       "url": `${API_URL}/gigs/${id}`,
       "method": "DELETE",
       "headers": {

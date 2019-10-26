@@ -1,6 +1,9 @@
+
+
+
 $(document).ready(() => {
-    //const API_URL = 'http://192.168.1.29:3001'
-    const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+    const API_URL = 'http://localhost:3001'
+    //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
     formClear();
     
     $("#but_submit").click(() => {
@@ -34,13 +37,16 @@ $(document).ready(() => {
             });
         };
     });
-formClear = () => {
+
+});
+
+const formClear = () => {
     $("#txt_uname").val("");
     $("#txt_pwd").val("");
     }
 
 // Handle exceptions from AJAX calls
-handleException = (request, message, error) => {
+const handleException = (request, message, error) => {
     var msg = "";
   
     msg += "Code: " + request.status + "\n";
@@ -50,5 +56,4 @@ handleException = (request, message, error) => {
     }
   
     alert(msg);
-  }
-});
+}

@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://192.168.1.29:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   venuesList();
 
 
@@ -16,7 +16,6 @@ venuesList = () => {
   var token = window.localStorage.getItem('token');
 
   $.ajax({
-    //"url": 'https://sura-ticket-manager.herokuapp.com/venues',
     "url": `${API_URL}/venues`,
     "method": "GET",
     "headers": {
@@ -101,7 +100,6 @@ venueGet = (ctl) => {
 
   // Call Web API to get a Venuet
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/venues/${id}`,
     "url": `${API_URL}/venues/${id}`,
     "method": "GET",
     "headers": {
@@ -164,7 +162,6 @@ venueUpdate = (venue) => {
 
   // Call Web API to update venue
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/venues/${venue._id}`,
     "url": `${API_URL}/venues/${venue._id}`,
     "method": "PATCH",
     "headers": {
@@ -200,7 +197,6 @@ venueAdd = (venue) => {
 
   // Call Web API to add a new venue
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/venues`,
     "url": `${API_URL}/venues`,
     "method": "POST",
     "headers": {
@@ -252,7 +248,6 @@ enueUpdateInTable = (venue) => {
 
     // Call Web API to delete a venue
     $.ajax({
-      //"url": `https://sura-ticket-manager.herokuapp.com/venues/${id}`,
       "url": `${API_URL}/venues/${id}`,
       "method": "DELETE",
       "headers": {

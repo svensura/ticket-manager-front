@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://192.168.1.29:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   usersList();
 
   // take focus away
@@ -14,7 +14,6 @@ usersList = () => {
   var token = window.localStorage.getItem('token');
 
   $.ajax({
-    //"url": 'https://sura-ticket-manager.herokuapp.com/users',
     "url": `${API_URL}/users`,
     "method": "GET",
     "headers": {
@@ -92,7 +91,6 @@ userGet = (ctl) => {
 
   // Call Web API to get a Product
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/users/${id}`,
     "url": `${API_URL}/users/${id}`,
     "method": "GET",
     "headers": {
@@ -154,7 +152,6 @@ function userUpdate(user) {
 
   // Call Web API to update user
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/users/${user._id}`,
     "url": `${API_URL}/users/${id}`,
     "method": "PATCH",
     "headers": {
@@ -193,7 +190,6 @@ userAdd = (user) => {
 
   // Call Web API to add a new user
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/users`,
     "url": `${API_URL}/users`,
     "method": "POST",
     "headers": {
@@ -246,7 +242,6 @@ userUpdateInTable= (user) => {
 
     // Call Web API to delete a user
     $.ajax({
-      //"url": `https://sura-ticket-manager.herokuapp.com/users/${id}`,
       "url": `${API_URL}/users/${id}`,
       "method": "DELETE",
       "headers": {

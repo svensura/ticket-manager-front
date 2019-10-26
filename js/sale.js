@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  const API_URL = 'http://192.168.1.29:3001'
+  const API_URL = 'http://localhost:3001'
   //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
@@ -14,7 +14,6 @@ gigsList = () => {
   var token = window.localStorage.getItem('token');
 
   $.ajax({
-    //"url": 'https://sura-ticket-manager.herokuapp.com/gigs',
     "url": `${API_URL}/gigs`,
     "method": "GET",
     "headers": {
@@ -92,7 +91,6 @@ gigGetBuy = (ctl) => {
 
 // Call Web API to get a Gig
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/gigs/${id}`,
     "url": `${API_URL}/gigs/${id}`,
     "method": "GET",
     "headers": {
@@ -159,7 +157,6 @@ console.log(data)
 
   // Call Web API to sell a new gig
   $.ajax({
-    //"url": `https://sura-ticket-manager.herokuapp.com/gigs_buy/${id}`,
     "url": `${API_URL}/gigs_buy/${id}`,
     "method": "PATCH",
     "headers": {
