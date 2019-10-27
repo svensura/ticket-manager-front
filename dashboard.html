@@ -6,8 +6,27 @@
   <meta charset="utf-8">
   <title>Literaturnacht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/popup.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+  <script src="/js/libs/moment.js"></script>
+
+  <script src="/js/libs/mustache.js"></script>
+
+  <script src="/js/libs/deparam.js"></script>
+
+  <script src="/js/dashboard.js"></script>
+
+  <script src="/js/commonFunctions.js"></script>
+
+
+
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_ACm-MdpaVqr5Fy2YvHy03E7botxaMB0&callback=initMap"></script>
 
   <style>
     /* Always set the map height explicitly to define the size of the div
@@ -42,29 +61,40 @@
       </ul>
     </div>
   </nav>
-  
+ 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" id="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div id="list"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 
-  <div id="map"></div>
+<div id="map"></div>
+
+
+
+
+
+
  
 
-  <script src="/js/libs/jquery-3.3.1.js"></script>
-
-  <script src="/js/libs/bootstrap.min.js"></script>
-
-  <script src="/js/libs/moment.js"></script>
-
-  <script src="/js/libs/mustache.js"></script>
-
-  <script src="/js/libs/deparam.js"></script>
-
-  <script src="/js/dashboard.js"></script>
-
-  <script src="/js/commonFunctions.js"></script>
 
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_ACm-MdpaVqr5Fy2YvHy03E7botxaMB0&callback=initMap">
-  </script>
+ 
 
 
 
@@ -72,4 +102,3 @@
 
 </html>
 
-<p></p>

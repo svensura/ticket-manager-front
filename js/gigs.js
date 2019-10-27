@@ -210,7 +210,7 @@ gigUpdateClick = () => {
     }
 
 
-fgigUpdate = (gig) => {
+gigUpdate = (gig) => {
 
   var token = window.localStorage.getItem('token');
 
@@ -326,7 +326,7 @@ function gigSendList(ctl) {
 
     // Call Web API to delete a gig
     $.ajax({
-      "url": `${API_URL}/gigs_list/${id}`,
+      "url": `${API_URL}/gigs_paypal_list_email/${id}`,
       "method": "POST",
       "headers": {
         "Content-Type": "application/json",

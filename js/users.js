@@ -84,7 +84,7 @@ userGet = (ctl) => {
 
   // Get user id from data- attribute
   var id = $(ctl).data("id");
-  console.log(id);
+
   
   // Store user id in hidden field
   $("#storeid").val(id);
