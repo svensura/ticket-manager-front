@@ -9,6 +9,7 @@
   
   <link rel="stylesheet" href="/css/popup.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/disableLink.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -38,8 +39,8 @@
         <li class="active"><a href="users.html">Users</a></li>
         <li><a href="venues.html">Venues</a></li>
         <li><a href="gigs.html">Gigs</a></li>
-        <li><a href="sale.html">Ticketsale</a></li>
-        <li class="pointer"><a onclick="logoutClicked()" >Logout</a></li>
+        <li><a class="isDisabled" href="sale.html">Ticketsale</a></li>
+        <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -95,8 +96,9 @@
           <input type="password" id="password" class="form-control" autocomplete="false"/>
         </div>
         <div class="form-field" id="vendorField">
+          
           <label for="active">Vendor</label>
-          <input type="checkbox" id="vendorBox" class="form-control" />
+          <input type="checkbox" id="vendorBox"/>
         </div>
         <div class="row">
           <div class="col-xs-12">

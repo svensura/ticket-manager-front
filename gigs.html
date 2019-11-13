@@ -9,10 +9,12 @@
   
   <link rel="stylesheet" href="/css/popup.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/disableLink.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 
   <script src="/js/libs/moment.js"></script>
 
@@ -39,8 +41,8 @@
         <li><a href="users.html">Users</a></li>
         <li><a href="venues.html">Venues</a></li>
         <li class="active"><a href="gigs.html">Gigs</a></li>
-        <li><a href="sale.html">Ticketsale</a></li>
-       <li class="pointer"><a onclick="logoutClicked()" >Logout</a></li>
+        <li><a class="isDisabled" href="sale.html">Ticketsale</a></li>
+       <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
       </ul>
     </div>
   </nav>

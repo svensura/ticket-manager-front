@@ -12,14 +12,14 @@ var sort_by = (field, reverse, primer) => {
 }
   
   // logout
-function logoutClicked() {
+function logoutClicked(isVendor) {
   $(this).blur();
   if (confirm("Are you sure to logout ?")){
     var token = window.localStorage.getItem('token');
     // Call Web API to logout
     $.ajax(
       {
-        "url": `${API_URL}/users/logoutUser`,
+        "url": `${!isVendor ? API_URL + "/users/logoutUser" : API_URL + "/users/logoutVendor"}`,
         "method": "POST",
         "headers": {
         "Content-Type": "application/json",

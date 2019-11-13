@@ -9,6 +9,7 @@
  
   <link rel="stylesheet" href="/css/popup.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/disableLink.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -35,12 +36,12 @@
         <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="users.html">Users</a></li>
-        <li><a href="venues.html">Venues</a></li>
-        <li><a href="gigs.html">Gigs</a></li>
+        <li><a class="isDisabled" href="dashboard.html">Dashboard</a></li>
+        <li><a class="isDisabled" href="users.html">Users</a></li>
+        <li><a class="isDisabled" href="venues.html">Venues</a></li>
+        <li><a class="isDisabled" href="gigs.html">Gigs</a></li>
         <li class="active"><a href="sale.html">Ticketsale</a></li>
-        <li class="pointer"><a onclick="logoutClicked()" >Logout</a></li>
+        <li class="pointer"><a onclick="logoutClicked(true)" >Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -51,7 +52,7 @@
     <div id="table">
     <div class="row">
       <div class="col-sm-6">
-        <h2>Ticketsale Bookstore</h2>
+        <h2 id="sellersName"></h2>
       </div>
 
     </div>

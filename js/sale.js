@@ -1,12 +1,34 @@
 $(document).ready(() => {
   const API_URL = 'http://localhost:3001'
   //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  getSellersName();
   gigsList();
 
   // take focus away
   document.addEventListener('click', (e) => { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
 
+// get sellers name
+getSellersName = () => {
+
+  var token = window.localStorage.getItem('token');
+
+  $.ajax({
+    "url": `${API_URL}/users/me`,
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    success: (user) => {
+      console.log('name', user.name)
+      $("#sellersName").text("Ticketsale " + user.name)
+    },
+    error: (request, message, error) => {
+      handleException(request, message, error);
+    }
+  });
+}
 
 // Get all Gigs to display
 gigsList = () => {
