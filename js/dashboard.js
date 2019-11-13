@@ -1,6 +1,6 @@
 $(document).ready(async () => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
 
 
   var mapWaitCount = 0;

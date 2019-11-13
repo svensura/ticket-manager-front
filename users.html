@@ -67,6 +67,7 @@
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Role</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -79,7 +80,7 @@
       <div class="container">
         <div class="form-field">
           <label for="username">Name</label>
-          <input type="text" id="username" class="form-control" autofocus/>
+          <input type="text" id="username" class="form-control" autocomplete="false" autofocus/>
         </div>
         <div class="form-field">
           <label for="email">Email</label>
@@ -91,7 +92,11 @@
         </div>
         <div class="form-field">
           <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" />
+          <input type="password" id="password" class="form-control" autocomplete="false"/>
+        </div>
+        <div class="form-field" id="vendorField">
+          <label for="active">Vendor</label>
+          <input type="checkbox" id="vendorBox" class="form-control" />
         </div>
         <div class="row">
           <div class="col-xs-12">

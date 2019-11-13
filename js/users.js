@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   usersList();
 
   // take focus away
@@ -66,6 +66,12 @@ userBuildTableRow = (user) => {
         "<td>" + user.email + "</td>" +
         "<td>" + user.phone + "</td>" +
         "<td>" +
+        "<button type='button' disbabled " +
+          "class='btn btn-default' disabled = 'disabled'>" +
+          "<span class='" + 
+        ((user.vendor) ? 'glyphicon glyphicon-eur' : 'glyphicon glyphicon-user' ) + "' />" +
+         "</button>" +
+         "<td>" +
         "<button type='button' " +
         "onclick='userDelete(this);' " +
         "class='btn btn-default' " +
@@ -84,6 +90,8 @@ userGet = (ctl) => {
 
   // Get user id from data- attribute
   var id = $(ctl).data("id");
+  console.log(id);
+
 
   
   // Store user id in hidden field
@@ -102,6 +110,7 @@ userGet = (ctl) => {
 
       // Change Update Button Text
       $("#userUpdateButton").text("Update");
+      $("#vendorField").hide();
     },
     error: (request, message, error) => {
       handleException(request, message, error);
@@ -125,10 +134,11 @@ userUpdateClick = () => {
   user.email = $("#email").val();
   user.phone = $("#phone").val();
   user.password = $("#password").val();
+  user.vendor = $('#vendorBox').prop('checked');
   if ($("#userUpdateButton").text().trim() == "Add") {
     userAdd(user);
   } else {
-    userUpdate(u^ser);
+    userUpdate(user);
   }
 }
 
@@ -142,6 +152,7 @@ function userUpdate(user) {
   data.name = user.name
   data.email = user.email
   data.phone = user.phone
+
   if (user.password.length !== 0) {
     if (user.password.length > 6) {
       data.password = user.password
@@ -152,7 +163,7 @@ function userUpdate(user) {
 
   // Call Web API to update user
   $.ajax({
-    "url": `${API_URL}/users/${id}`,
+    "url": `${API_URL}/users/${user._id}`,
     "method": "PATCH",
     "headers": {
       "Content-Type": "application/json",
@@ -170,7 +181,7 @@ function userUpdate(user) {
   });
 }
 
-fuserUpdateSuccess = (user) => {
+userUpdateSuccess = (user) => {
   userUpdateInTable(user);
 }
 
@@ -182,6 +193,7 @@ userAdd = (user) => {
   data.name = user.name
   data.email = user.email
   data.phone = user.phone
+  data.vendor = user.vendor
   if (user.password.length > 6) {
       data.password = user.password
   } else {
@@ -269,6 +281,8 @@ userFormClear = () => {
   $("#email").val("");
   $("#phone").val("");
   $("#password").val("");
+  $("#vendorField").show();
+  $("#userUpdateButton").text("Add");
   userCloseForm()
 }
 

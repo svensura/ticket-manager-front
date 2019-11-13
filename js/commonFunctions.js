@@ -1,6 +1,5 @@
-
-//const API_URL = 'http://localhost:3001'
-const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+const API_URL = 'http://localhost:3001'
+//const API_URL = 'https://sura-ticket-manager.herokuapp.com'
 // alphabetical sort function
 var sort_by = (field, reverse, primer) => {
   var key = primer ? 
@@ -20,7 +19,7 @@ function logoutClicked() {
     // Call Web API to logout
     $.ajax(
       {
-        "url": `${API_URL}/users/logout`,
+        "url": `${API_URL}/users/logoutUser`,
         "method": "POST",
         "headers": {
         "Content-Type": "application/json",
@@ -28,7 +27,7 @@ function logoutClicked() {
       },
       "processData": false,
       "data": '',
-        success: (gig) => {
+        success: () => {
           window.location = "index.html"
         },
         error: (request, message, error) => {

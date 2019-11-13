@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   venuesList();
 
 
@@ -141,7 +141,6 @@ venueUpdateClick = () => {
   venue.contact.phone = $("#cPhone").val();
   venue.seats = $("#seats").val();
   venue.active = $('#activeBox').prop('checked');
-  console.log('active:', venue.active)
   if ($("#venueUpdateButton").text().trim() == "Add") {
     venueAdd(venue);
   } else {
@@ -159,7 +158,6 @@ venueUpdate = (venue) => {
   data.contact = venue.contact
   data.seats = venue.seats
   data.active = venue.active
-
   // Call Web API to update venue
   $.ajax({
     "url": `${API_URL}/venues/${venue._id}`,
@@ -221,7 +219,7 @@ venueAddSuccess = (venue) => {
 }
 
 // Update venue in <table>
-enueUpdateInTable = (venue) => {
+venueUpdateInTable = (venue) => {
   // Find Venue in <table>
   var row = $("#venueTable button[data-id='" + venue._id + "']")
             .parents("tr")[0];
