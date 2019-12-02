@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
   // take focus away
@@ -14,7 +14,7 @@ $(document).ready(function () {
 // Get all Gigs to display
 gigsList = () => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/gigs`,
@@ -56,7 +56,7 @@ gigAddRow = (gig) => {
 
 // Build a <tr> for a row of table data
 gigBuildTableRow = (gig) => {
-  var ret = "<tr>" +
+  const ret = "<tr>" +
       "<td>" +
         "<button type='button' " +
           "onclick='gigGet(this);' " +
@@ -93,13 +93,13 @@ gigBuildTableRow = (gig) => {
 
 gigGet = (ctl) => {
   
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   // Get gig id from  first part of data- attribute (Split-operator = /)
-  var id = $(ctl).data("id").split("/")[0];
+  const id = $(ctl).data("id").split("/")[0];
 
   // Get address from  second part of data- attribute (Split-operator = /)
-  var workingAddress = $(ctl).data("id").split("/")[1];
+  const workingAddress = $(ctl).data("id").split("/")[1];
 
   // Store gig id in hidden field
   $("#storeid").val(id);
@@ -141,7 +141,7 @@ gigGet = (ctl) => {
 // Call Web API to get a List of active Venues
 addressesToForm = (workingAddress) => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/venues`,
@@ -212,7 +212,7 @@ gigUpdateClick = () => {
 
 gigUpdate = (gig) => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   data = new Object();
   data.houseNo = gig.houseNo
@@ -259,7 +259,7 @@ gigUpdateSuccess = (gig) => {
 
 gigAdd = (gig) => {
 
- var token = window.localStorage.getItem('token');
+ const token = window.localStorage.getItem('token');
 
   data = new Object();
   data.houseNo = gig.houseNo
@@ -296,7 +296,7 @@ gigAddSuccess = (gig) => {
 // Update gig in <table>
 gigUpdateInTable = (gig) => {
   // Find Gig in <table>
-  var row = $("#gigTable button[data-id='" + gig._id + "']")
+  const row = $("#gigTable button[data-id='" + gig._id + "']")
             .parents("tr")[0];
   // Add changed gig to table
   $(row).after(gigBuildTableRow(gig));
@@ -320,9 +320,9 @@ addClick = () => {
 function gigSendList(ctl) {
   $(this).blur();
   if (confirm("Are you sure ?")){
-    var token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
-    var id = $(ctl).data("id");
+    const id = $(ctl).data("id");
 
     // Call Web API to delete a gig
     $.ajax({
@@ -349,9 +349,9 @@ function gigSendList(ctl) {
  function gigDelete(ctl) {
   $(this).blur();
   if (confirm("Are you sure ?")){
-    var token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
-    var id = $(ctl).data("id");
+    const id = $(ctl).data("id");
 
     // Call Web API to delete a gig
     $.ajax({

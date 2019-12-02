@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   usersList();
 
   // take focus away
@@ -11,7 +11,7 @@ $(document).ready(() => {
 // Get all Users to display
 usersList = () => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/users`,
@@ -53,7 +53,7 @@ userAddRow = (user) => {
 
 // Build a <tr> for a row of table data
 userBuildTableRow = (user) => {
-  var ret = "<tr>" +
+  const ret = "<tr>" +
       "<td>" +
         "<button type='button' " +
           "onclick='userGet(this);' " +
@@ -86,10 +86,10 @@ userBuildTableRow = (user) => {
 
 userGet = (ctl) => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   // Get user id from data- attribute
-  var id = $(ctl).data("id");
+  const id = $(ctl).data("id");
   console.log(id);
 
 
@@ -147,7 +147,7 @@ function addClick() {
 }
 
 function userUpdate(user) {
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
   data = new Object();
   data.name = user.name
   data.email = user.email

@@ -2,14 +2,14 @@
 
 
 $(document).ready(() => {
-    //const API_URL = 'http://localhost:3001'
-    const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+    const API_URL = 'http://localhost:3001'
+    //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
     formClear();
     
     $("#but_submit").click(() => {
         
-        var username = $("#txt_uname").val().trim();
-        var password = $("#txt_pwd").val().trim();
+        const username = $("#txt_uname").val().trim();
+        const password = $("#txt_pwd").val().trim();
         if( username != "" && password != "" ){
             console.log('Clikck', username, password)
             $.ajax({
@@ -42,13 +42,13 @@ $(document).ready(() => {
 
 });
 
-const formClear = () => {
+formClear = () => {
     $("#txt_uname").val("");
     $("#txt_pwd").val("");
     }
 
 // Handle exceptions from AJAX calls
-const handleException = (request, message, error) => {
+handleException = (request, message, error) => {
     var msg = "";
   
     msg += "Code: " + request.status + "\n";

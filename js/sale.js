@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   getSellersName();
   gigsList();
 
@@ -11,7 +11,7 @@ $(document).ready(() => {
 // get sellers name
 getSellersName = () => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/users/me`,
@@ -21,8 +21,9 @@ getSellersName = () => {
       "Authorization": `Bearer ${token}`,
     },
     success: (user) => {
-      console.log('name', user.name)
       $("#sellersName").text("Ticketsale " + user.name)
+      // Store user id in hidden field
+      $("#storeVendorid").val(user._id);
     },
     error: (request, message, error) => {
       handleException(request, message, error);
@@ -33,7 +34,7 @@ getSellersName = () => {
 // Get all Gigs to display
 gigsList = () => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/gigs`,
@@ -75,7 +76,7 @@ gigAddRow = (gig) => {
 
 // Build a <tr> for a row of table data
 gigBuildTableRow = (gig) => {
-  var ret = "<tr>" +
+  const ret = "<tr>" +
         "<td class='text-right'>" + gig.houseNo + "</td>" +
         "<td>" + gig.title + "</td>" +
         "<td>" + gig.performer.name + "</td>" +
@@ -104,9 +105,9 @@ gigBuildTableRow = (gig) => {
 
 gigGetBuy = (ctl) => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
-  var id = $(ctl).data("id")
+  const id = $(ctl).data("id")
 
   // Store gig id in hidden field
   $("#storeid").val(id);
@@ -130,9 +131,9 @@ gigGetBuy = (ctl) => {
 
 function gigGetRefund(ctl) {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
-  var id = $(ctl).data("id")
+  const id = $(ctl).data("id")
 
   // Store gig id in hidden field
   $("#storeid").val(id);
@@ -174,7 +175,7 @@ gigBuy = (amount) => {
 const id = $("#storeid").val();
 const data = new Object()
 data.amount = amount 
-var token = window.localStorage.getItem('token');
+const token = window.localStorage.getItem('token');
 console.log(data)
 
   // Call Web API to sell a new gig
@@ -223,6 +224,27 @@ function refundClick() {
     }   
   
 }
+
+vendorListEmail = () => {
+
+  const token = window.localStorage.getItem('token');
+
+// Call Web API 
+  $.ajax({
+    "url": `${API_URL}/gigs_list_email`,
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    success: () => {
+
+   },
+    error: (request, message, error) => {
+      handleException(request, message, error);
+    }
+  });
+} 
 
 // Clear form fields
 saleFormClear = () => {

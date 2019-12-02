@@ -1,6 +1,6 @@
 $(document).ready(async () => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
 
 
   var mapWaitCount = 0;
@@ -36,7 +36,7 @@ $(document).ready(async () => {
 
 const markersList = () => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   $.ajax({
     "url": `${API_URL}/gigs`,
@@ -156,8 +156,8 @@ clearMarkers = () => {
 
 
 payPalList = (ctl) => {
-  var token = window.localStorage.getItem('token');
-  var id = $(ctl).data("id")
+  const token = window.localStorage.getItem('token');
+  const id = $(ctl).data("id")
   $("#modal-title").text(`Tickets sold using PayPal for ${$("#houseNo").text()}`);
   $.ajax({
     "url": `${API_URL}/gigs_paypal_list_dashboard/${id}`,
@@ -195,9 +195,9 @@ paypalListSuccess = (tickets, id) => {
 function gigSendList(ctl) {
   $(this).blur();
   if (confirm("Are you sure ?")){
-    var token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
-    var id = $(ctl).data("id");
+    const id = $(ctl).data("id");
 
     // Call Web API to delete a gig
     $.ajax({
