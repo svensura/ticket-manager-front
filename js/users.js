@@ -77,8 +77,7 @@ userBuildTableRow = (user) => {
         "class='btn btn-default' " +
         "data-id='" + user._id + "'>" +
         "<span class='glyphicon glyphicon-remove' />" +
-        "</button>" +
-      "</td>" +
+        "</button>" + "</td>" +
     "</tr>" 
 
   return ret;
@@ -122,6 +121,11 @@ userToFields = (user) => {
   $("#username").val(user.name);
   $("#email").val(user.email);
   $("#phone").val(user.phone);
+  if (user.vendor) {
+    $("#sendListButton").show();
+  } else {
+    $("#sendListButton").hide();
+  }
   userOpenForm()
 }
 
@@ -187,7 +191,7 @@ userUpdateSuccess = (user) => {
 
 userAdd = (user) => {
 
-  var token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem('token');
 
   data = new Object();
   data.name = user.name
@@ -248,9 +252,9 @@ userUpdateInTable= (user) => {
  function userDelete(ctl) {
   $(this).blur();
   if (confirm("Are you sure ?")){
-    var token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
-    var id = $(ctl).data("id");
+    const id = $(ctl).data("id");
 
     // Call Web API to delete a user
     $.ajax({
@@ -273,6 +277,30 @@ userUpdateInTable= (user) => {
   }
  }
 
+ // send an email with summarization of this vendor to the users email address
+ const sendSumList = () => {
+  const token = window.localStorage.getItem('token');
+  const vendorId = $("#storeid").val();
+  // Call Web API to add a new user
+  $.ajax({
+    "url": `${API_URL}/gigs_list_email/${vendorId}`,
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+      },
+    success: (reply) => {
+      userAddSuccess(reply.user);
+    },
+    error: (request, message, error) => {
+      handleException(request, message, error);
+    }
+  });
+  // Clear form fields
+  userFormClear();
+}
+
+ 
 
 
 // Clear form fields
@@ -291,6 +319,7 @@ userOpenForm = () => {
   $("#navbar").hide()
   document.getElementById("userForm").style.display = "block";
   $("#username").focus()
+
 }
 
 userCloseForm = () => {
