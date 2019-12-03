@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   gigsList();
 
   // take focus away
@@ -373,6 +373,27 @@ function gigSendList(ctl) {
     });
   }
  }
+
+ sendSumList = () => {
+
+  const token = window.localStorage.getItem('token');
+
+// Call Web API 
+  $.ajax({
+    "url": `${API_URL}/gigs_list_email/paypal`,
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    success: () => {
+
+   },
+    error: (request, message, error) => {
+      handleException(request, message, error);
+    }
+  });
+} 
 
 // Clear form fields
 gigFormClear = () =>  {

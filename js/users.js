@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+  const API_URL = 'http://localhost:3001'
+  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
   usersList();
 
   // take focus away
@@ -289,9 +289,7 @@ userUpdateInTable= (user) => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
       },
-    success: (reply) => {
-      userAddSuccess(reply.user);
-    },
+    success: () => {},
     error: (request, message, error) => {
       handleException(request, message, error);
     }
