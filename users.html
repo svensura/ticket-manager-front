@@ -35,11 +35,11 @@
         <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li class="active"><a href="users.html">Users</a></li>
-        <li><a href="venues.html">Venues</a></li>
-        <li><a href="gigs.html">Gigs</a></li>
-        <li><a class="isDisabled" href="sale.html">Ticketsale</a></li>
+        <li><a href="dashboard.html">Übersicht</a></li>
+        <li class="active"><a href="users.html">Benutzer</a></li>
+        <li><a href="venues.html">Häuser</a></li>
+        <li><a href="gigs.html">Lesungen</a></li>
+        <li><a class="isDisabled" href="sale.html">Verkauf</a></li>
         <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
       </ul>
     </div>
@@ -49,11 +49,11 @@
     <div id="table">
     <div class="row" >
       <div class="col-sm-6">
-        <h2>Users</h2>
+        <h2>Benutzer</h2>
       </div>
       <div class="col-xs-12">
         <button type="button" class="btn btn-primary" onclick="userOpenForm();">
-          Add
+          Hinzufügen
         </button>
       </div>
     </div>
@@ -64,12 +64,12 @@
               table-condensed table-striped">
           <thead>
             <tr>
-              <th>Edit</th>
+              <th>Bearbeiten</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Phone</th>
-              <th>Role</th>
-              <th>Delete</th>
+              <th>Telefon</th>
+              <th>Rolle</th>
+              <th>Entfernen</th>
             </tr>
           </thead>
         </table>
@@ -88,29 +88,29 @@
           <input type="text" id="email" class="form-control" />
         </div>
         <div class="form-field">
-          <label for="phone">Phone</label>
+          <label for="phone">Telefon</label>
           <input type="text" id="phone" class="form-control" />
         </div>
         <div class="form-field">
-          <label for="password">Password</label>
+          <label for="password">Passwort</label>
           <input type="password" id="password" class="form-control" autocomplete="false"/>
         </div>
         <div class="form-field" id="vendorField">
           
-          <label for="active">Vendor</label>
+          <label for="active">Verkäufer</label>
           <input type="checkbox" id="vendorBox"/>
         </div>
         <div class="row">
           <div class="col-xs-12">
 
             <button type="button" id="userUpdateButton" class="btn btn-primary" onclick="userUpdateClick();">
-              Add
+              Hinzufügen
             </button>
             <button type="button" id="userCloseButton" class="btn btn-primary" onclick="userFormClear();">
-              Back
+              Zurück
             </button>
             <button type="button" id="sendListButton" class="btn btn-primary"  onclick="sendSumList();">
-                Send me vendor-summarization
+                End- / Zwischenabrechnung schicken
               </button>
           </div>
           

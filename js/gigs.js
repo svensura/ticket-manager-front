@@ -116,7 +116,7 @@ gigGet = (ctl) => {
       gigToFields(gig);
       addressesToForm(workingAddress);
       // Change Update Button Text
-      $("#gigUpdateButton").text("Update");
+      $("#gigUpdateButton").text("Übernehmen");
     },
     error: (request, message, error) => {
       handleException(request, message, error);
@@ -201,7 +201,7 @@ gigUpdateClick = () => {
       gig.venue = $("#gAddress").val();
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
       //console.log(gig.feeEur)
-      if ($("#gigUpdateButton").text().trim() == "Add") {
+      if ($("#gigUpdateButton").text().trim() == "Hinzufügen") {
         gigAdd(gig);
       }
       else {
@@ -307,7 +307,7 @@ gigUpdateInTable = (gig) => {
   gigFormClear();
 
   // Change Update Button Text
-  $("#gigUpdateButton").text("Add");
+  $("#gigUpdateButton").text("Hinzufügen");
 }
 
 // Handle click event on Add button
@@ -348,7 +348,7 @@ function gigSendList(ctl) {
  // Delete gig from <table>
  function gigDelete(ctl) {
   $(this).blur();
-  if (confirm("Are you sure ?")){
+  if (confirm("Sind Sie sicher ?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");
@@ -419,7 +419,7 @@ gigOpenForm = () => {
 gigCloseForm = () => {
   $("#table").show()
   $("#navbar").show()
-  $("#gigUpdateButton").text("Add");
+  $("#gigUpdateButton").text("Hinzufügen");
   document.getElementById("gigForm").style.display = "none";
 }
 

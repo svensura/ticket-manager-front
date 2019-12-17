@@ -30,7 +30,7 @@ $(document).ready(() => {
                             window.location = "sale.html"
                         }   
                     } else {
-                        window.alert("Wrong email or password")
+                        window.alert("Falsche email-Adresse und/oder falsches Passwort!")
                     }    
                 },
                 error: (request, message, error) => {

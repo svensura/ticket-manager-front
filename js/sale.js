@@ -21,7 +21,7 @@ getSellersName = () => {
       "Authorization": `Bearer ${token}`,
     },
     success: (user) => {
-      $("#sellersName").text("Ticketsale " + user.name)
+      $("#sellersName").text("Ticketverkauf " + user.name)
       // Store user id in hidden field
       $("#storeVendorid").val(user._id);
     },
@@ -149,7 +149,7 @@ function gigGetRefund(ctl) {
     },
     success: function (gig) {
       $(this).blur();
-      if (confirm(`Do you want to refund a ticket for house No. ${gig.houseNo} ?`)){
+      if (confirm(`Wollen Sie ein Ticket für Haus Nr. ${gig.houseNo} zurückgeben?`)){
       gigBuy(-1);
       }   
       
@@ -190,7 +190,8 @@ console.log(data)
     "data": `${JSON.stringify(data)}`
     ,
     success: () => {
-      alert(`You successfully ${amount<0?'refunded ' + (amount * -1):'bought ' + amount} ticket ${amount<0?'':'(s)'}`)
+      //alert(`You successfully ${amount<0?'refunded ' + (amount * -1):'bought ' + amount} ticket ${amount<0?'':'(s)'}`)
+      alert(`Sie haben erfolgreich ${amount<0 ? ((amount * -1) + 'zurückgegenommen!') : (amount + 'Ticket' + `${amount<2 ? '' : '(s)' }` + 'verkauft!') }`)
       location.reload();
     },
     error: (request, message, error) => {
@@ -209,21 +210,12 @@ console.log(data)
 function buyClick() {
   const amount = $("#amount").val();
   $(this).blur();
-    if (confirm(`Do you want to buy ${amount} ticket(s) ?`)){
+    if (confirm(`Möchten Sie ${amount} Ticket` + `${amount<0 ? '' : '(s)' }` +  `verkaufen?`)){
       gigBuy(amount)
     }   
   
 }
 
-// Handle click event on Refund button
-function refundClick() {
-  const amount = -1;
-  $(this).blur();
-    if (confirm(`Do you want to buy ${amount} ticket(s) ?`)){
-      gigBuy(amount)
-    }   
-  
-}
 
 vendorListEmail = () => {
 

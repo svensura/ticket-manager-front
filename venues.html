@@ -36,11 +36,11 @@
         <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="users.html">Users</a></li>
-        <li class="active"><a href="venues.html">Venues</a></li>
-        <li><a href="gigs.html">Gigs</a></li>
-        <li><a class="isDisabled" href="sale.html">Ticketsale</a></li>
+        <li><a href="dashboard.html">Übersicht</a></li>
+        <li><a href="users.html">Benutzer</a></li>
+        <li class="active"><a href="venues.html">Häuser</a></li>
+        <li><a href="gigs.html">Lesungen</a></li>
+        <li><a class="isDisabled" href="sale.html">Verkauf</a></li>
         <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
       </ul>
     </div>
@@ -50,11 +50,11 @@
     <div id="table">
     <div class="row">
       <div class="col-sm-6">
-        <h2>Venues</h2>
+        <h2>Häuser</h2>
       </div>
       <div class="col-xs-12">
         <button type="button" class="btn btn-primary" onclick="venueOpenForm();">
-          Add
+          Hinzufügen
         </button>
       </div>
     </div>
@@ -65,12 +65,12 @@
                     table-condensed table-striped">
           <thead>
             <tr>
-              <th>Edit</th>
-              <th>Address</th>
-              <th>Contact</th>
-              <th>Seats</th>
-              <th>Active</th>
-              <th>Delete</th>
+              <th>Bearbeiten</th>
+              <th>Adresse</th>
+              <th>Kontact</th>
+              <th>Plätze</th>
+              <th>Aktive</th>
+              <th>Entfernen</th>
             </tr>
           </thead>
         </table>
@@ -81,7 +81,7 @@
     <div class="form-popup" id="venueForm">
       <div class="container">
         <div class="form-field">
-          <label for="address">Address</label>
+          <label for="address">Adresse</label>
           <input type="text" id="address" class="form-control" autofocus/>
         </div>
         <div class="form-field">
@@ -93,24 +93,24 @@
             <input type="text" id="cEmail" class="form-control" />
         </div>
         <div class="form-field">
-            <label for="contact">Phone</label>
+            <label for="contact">Telefon</label>
             <input type="text" id="cPhone" class="form-control" />
           </div>
         <div class="form-field">
-          <label for="seats">Seats</label>
+          <label for="seats">Plätze</label>
           <input type="text" id="seats" class="form-control" />
         </div>
         <div class="form-field">
-          <label for="active">Active</label>
+          <label for="active">Aktive</label>
           <input type="checkbox" id="activeBox"/>
         </div>
         <div class="row">
           <div class="col-xs-12">
             <button type="button" id="venueUpdateButton" class="btn btn-primary" onclick="venueUpdateClick();">
-              Add
+              Hinzufügen
             </button>
             <button type="button" id="venueCloseButton" class="btn btn-primary" onclick="venueFormClear();">
-              Back
+              Zurück
             </button>
           </div>
         </div>

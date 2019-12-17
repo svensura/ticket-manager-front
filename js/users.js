@@ -108,7 +108,7 @@ userGet = (ctl) => {
       userToFields(user);
 
       // Change Update Button Text
-      $("#userUpdateButton").text("Update");
+      $("#userUpdateButton").text('Übernehmen');
       $("#vendorField").hide();
     },
     error: (request, message, error) => {
@@ -161,7 +161,7 @@ function userUpdate(user) {
     if (user.password.length > 6) {
       data.password = user.password
     } else {
-      window.alert("Password must be at least 7 characters long")
+      window.alert("Das Passwort muss mindestens 7 Zeichen enthalten!")
     }
   }
 
@@ -201,7 +201,7 @@ userAdd = (user) => {
   if (user.password.length > 6) {
       data.password = user.password
   } else {
-    window.alert("Password is required and must be at least 7 characters long")
+    window.alert("Das Passwort ist erforderlich und muss mindestens 7 Zeichen enthalten!")
   }
 
   // Call Web API to add a new user
@@ -243,7 +243,7 @@ userUpdateInTable= (user) => {
   userFormClear();
 
   // Change Update Button Text
-  $("#venueUpdateButton").text("Add");
+  $("#venueUpdateButton").text("Hinzufügen");
 }
 
 
@@ -251,7 +251,7 @@ userUpdateInTable= (user) => {
  // Delete user from <table>
  function userDelete(ctl) {
   $(this).blur();
-  if (confirm("Are you sure ?")){
+  if (confirm("Sind Sie sicher?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");
@@ -308,7 +308,7 @@ userFormClear = () => {
   $("#phone").val("");
   $("#password").val("");
   $("#vendorField").show();
-  $("#userUpdateButton").text("Add");
+  $("#userUpdateButton").text("Hinzufügen");
   userCloseForm()
 }
 

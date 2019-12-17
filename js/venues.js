@@ -110,7 +110,7 @@ venueGet = (ctl) => {
       venueToFields(venue);
 
       // Change Update Button Text
-      $("#venueUpdateButton").text("Update");
+      $("#venueUpdateButton").text("Übernehmen");
     },
     error: (request, message, error) => {
       handleException(request, message, error);
@@ -141,7 +141,7 @@ venueUpdateClick = () => {
   venue.contact.phone = $("#cPhone").val();
   venue.seats = $("#seats").val();
   venue.active = $('#activeBox').prop('checked');
-  if ($("#venueUpdateButton").text().trim() == "Add") {
+  if ($("#venueUpdateButton").text().trim() == "Hinzufügen") {
     venueAdd(venue);
   } else {
     venueUpdate(venue);
@@ -232,7 +232,7 @@ venueUpdateInTable = (venue) => {
   venueFormClear();
 
   // Change Update Button Text
-  $("#venueUpdateButton").text("Add");
+  $("#venueUpdateButton").text("Hinzufügen");
 }
 
 

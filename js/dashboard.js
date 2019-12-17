@@ -93,18 +93,18 @@ drop = (gigs) => {
       var newLatLng = { lat: lat, lng: lng };
       var contentString = '<div id="content">' + 
         `<input type="hidden" id="storeid" value=${gig._id} />` +
-        `<p id="houseNo"> House No. ${gig.houseNo}<p/>` +
+        `<p id="houseNo"> Haus Nr. ${gig.houseNo}<p/>` +
         `<p>"${gig.title}"<p/>` +
         `<p>${gig.performer.name}<p/>` +
         `<p>${gig.venue.address}<p/>` +
-        `<p>${(gig.startSeats - gig.soldSeats)} seat(s) available<p/>` +
+        `<p>${(gig.startSeats - gig.soldSeats)} Ticket(s) verfügbar<p/>` +
         `<button type='button' ` +
         `onclick='payPalList(this)' ` +
         `class='btn btn-default' ` +
         `data-toggle="modal" data-target="#myModal"`+
         `data-id=${gig._id}` +
         `>` +
-        `Show PayPal-Tickets` +
+        `Zeige PayPal-Tickets` +
         `</button>` + 
         '</div>';
       var colorString = ''
@@ -116,7 +116,7 @@ drop = (gigs) => {
         colorString = '/images/greenHouse.png'
       }
 
-      addMarkerWithTimeout(newLatLng, i * 200, `House No. ${gig.houseNo}`, contentString, colorString);
+      addMarkerWithTimeout(newLatLng, i * 200, `Haus Nr. ${gig.houseNo}`, contentString, colorString);
     }
     i++
   });
@@ -158,7 +158,7 @@ clearMarkers = () => {
 payPalList = (ctl) => {
   const token = window.localStorage.getItem('token');
   const id = $(ctl).data("id")
-  $("#modal-title").text(`Tickets sold using PayPal for ${$("#houseNo").text()}`);
+  $("#modal-title").text(`Ticketverkäufe über PayPal für ${$("#houseNo").text()}`);
   $.ajax({
     "url": `${API_URL}/gigs_paypal_list_dashboard/${id}`,
     "method": "GET",
@@ -184,9 +184,9 @@ paypalListSuccess = (tickets, id) => {
     $.each(tickets, (index, ticket) => {
       $("#list").append(`<p> ${ticket.date} ${ticket.buyer}</p>`);
     }) 
-    $("#list").append(`<button type="button" onclick="gigSendList(this)" class="btn btn-default" data-id="${id}">Send user an email</button>`)
+    $("#list").append(`<button type="button" onclick="gigSendList(this)" class="btn btn-default" data-id="${id}">Liste als email</button>`)
   } else {
-    $("#list").append(`<p> No paypal tickets. </p>`)
+    $("#list").append(`<p> Keine PayPal-Tickets. </p>`)
   }
 }
 
@@ -194,7 +194,7 @@ paypalListSuccess = (tickets, id) => {
 // Send Paypal-List with sold Tickets
 function gigSendList(ctl) {
   $(this).blur();
-  if (confirm("Are you sure ?")){
+  if (confirm("Sind Sie sicher ?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");

@@ -37,11 +37,11 @@
         <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="users.html">Users</a></li>
-        <li><a href="venues.html">Venues</a></li>
-        <li class="active"><a href="gigs.html">Gigs</a></li>
-        <li><a class="isDisabled" href="sale.html">Ticketsale</a></li>
+        <li><a href="dashboard.html">Übersicht</a></li>
+        <li><a href="users.html">Benutzer</a></li>
+        <li><a href="venues.html">Häuser</a></li>
+        <li class="active"><a href="gigs.html">Lesungen</a></li>
+        <li><a class="isDisabled" href="sale.html">Verkauf</a></li>
        <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
       </ul>
     </div>
@@ -53,11 +53,11 @@
     <div id="table">
     <div class="row">
       <div class="col-sm-6">
-        <h2>Gigs</h2>
+        <h2>Lesungen</h2>
       </div>
       <div class="col-xs-12">
         <button type="button" class="btn btn-primary" onclick="gigOpenForm();">
-          Add
+          Hinzufügen
         </button>
       </div>
     </div>
@@ -68,21 +68,21 @@
                     table-condensed table-striped">
           <thead>
             <tr>
-              <th>Edit</th>
-              <th>Number</th>
-              <th>Title</th>
-              <th>Performer</th>
-              <th>Venue</th>
-              <th>Fee</th>
-              <th class="text-center">Tickets Left</th>
-              <th class="text-center">Paypal List</th>
-              <th>Delete</th>
+              <th>Bearbeiten</th>
+              <th>Nr.alert</th>
+              <th>Titel</th>
+              <th>Gast</th>
+              <th>Haus</th>
+              <th>Preis</th>
+              <th class="text-center">Tickets übrig</th>
+              <th class="text-center">Paypal-Liste</th>
+              <th>Entfernen</th>
             </tr>
           </thead>
         </table>
         <div class="col-xs-12">
           <button type="button" id="sendListButton" class="btn btn-primary"  onclick="sendSumList();">
-              Send me paypal-summarization
+              PayPal-Zusammenfassung senden
             </button>
         </div>
       </div>
@@ -92,15 +92,15 @@
     <div class="form-popup" id="gigForm">
       <div class="container">
         <div class="form-field">
-          <label for="houseNo">No.</label>
+          <label for="houseNo">Nr.</label>
           <input type="text" id="houseNo" class="form-control" autofocus/>
         </div>
         <div class="form-field">
-          <label for="titlet">Title</label>
+          <label for="titlet">Titel</label>
           <input type="text" id="title" class="form-control" />
         </div>
         <div class="form-field">
-            <label for="gName">Performer</label>
+            <label for="gName">Gast</label>
             <input type="text" id="gName" class="form-control" />
         </div>
         <div class="form-field">
@@ -108,25 +108,25 @@
           <input type="text" id="gEmail" class="form-control" />
         </div>
         <div class="form-field">
-          <label for="gPhone">Phone</label>
+          <label for="gPhone">Telefon</label>
           <input type="text" id="gPhone" class="form-control" />
         </div>
         <div class="form-field">
-          <label for="gAddress">Venue</label>
+          <label for="gAddress">Haus</label>
           <select id="gAddress" class="form-control" >
           </select>
         </div>
         <div class="form-field">
-          <label for="feeEur">Fee</label>
+          <label for="feeEur">Preis</label>
           <input type="text" id="feeEur" class="form-control" />
         </div>
         <div class="row">
           <div class="col-xs-12">
             <button type="button" id="gigUpdateButton" class="btn btn-primary" onclick="gigUpdateClick();">
-              Add
+              Hinzufügen
             </button>
             <button type="button" id="gigCloseButton" class="btn btn-primary" onclick="gigFormClear();">
-              Back
+              Zurück
             </button>
           </div>
         </div>
