@@ -15,7 +15,7 @@ var sort_by = (field, reverse, primer) => {
   // logout
 function logoutClicked(isVendor) {
   $(this).blur();
-  if (confirm("Are you sure to logout ?")){
+  if (confirm("Wollen Sie sich wirklich ausloggen?")){
     var token = window.localStorage.getItem('token');
     // Call Web API to logout
     $.ajax(

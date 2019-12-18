@@ -319,7 +319,7 @@ addClick = () => {
 // Send Paypal-List with sold Tickets
 function gigSendList(ctl) {
   $(this).blur();
-  if (confirm("Are you sure ?")){
+  if (confirm("Sind Sie sicher, dass Sie dem Haus eine email schicken wollen?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");
@@ -348,7 +348,7 @@ function gigSendList(ctl) {
  // Delete gig from <table>
  function gigDelete(ctl) {
   $(this).blur();
-  if (confirm("Sind Sie sicher ?")){
+  if (confirm("Sind Sie sicher?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");
