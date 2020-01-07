@@ -374,13 +374,14 @@ function gigSendList(ctl) {
   }
  }
 
+// send an email with summarization of this vendor to the users email address
  sendSumList = () => {
 
   const token = window.localStorage.getItem('token');
 
 // Call Web API 
   $.ajax({
-    "url": `${API_URL}/gigs_list_email/paypal`,
+    "url": `${API_URL}/gigs_list_email_total`,
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",

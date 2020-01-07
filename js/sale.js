@@ -223,7 +223,7 @@ vendorListEmail = () => {
 
 // Call Web API 
   $.ajax({
-    "url": `${API_URL}/gigs_list_email`,
+    "url": `${API_URL}/gigs_list_email_me`,
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",

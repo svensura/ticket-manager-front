@@ -139,7 +139,7 @@ userUpdateClick = () => {
   user.phone = $("#phone").val();
   user.password = $("#password").val();
   user.vendor = $('#vendorBox').prop('checked');
-  if ($("#userUpdateButton").text().trim() == "Add") {
+  if ($("#userUpdateButton").text().trim() == "Hinzufügen") {
     userAdd(user);
   } else {
     userUpdate(user);
@@ -203,7 +203,7 @@ userAdd = (user) => {
   } else {
     window.alert("Das Passwort ist erforderlich und muss mindestens 7 Zeichen enthalten!")
   }
-
+  console.log('DATA: ', data),
   // Call Web API to add a new user
   $.ajax({
     "url": `${API_URL}/users`,
@@ -276,30 +276,6 @@ userUpdateInTable= (user) => {
     });
   }
  }
-
- // send an email with summarization of this vendor to the users email address
- const sendSumList = () => {
-  const token = window.localStorage.getItem('token');
-  const vendorId = $("#storeid").val();
-  // Call Web API to add a new user
-  $.ajax({
-    "url": `${API_URL}/gigs_list_email/${vendorId}`,
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-      },
-    success: () => {},
-    error: (request, message, error) => {
-      handleException(request, message, error);
-    }
-  });
-  // Clear form fields
-  userFormClear();
-}
-
- 
-
 
 // Clear form fields
 userFormClear = () => {
