@@ -70,6 +70,7 @@ gigBuildTableRow = (gig) => {
         "<td>" + gig.performer.name + "</td>" +
         "<td>" + gig.venue.address + "</td>" +
         "<td class='text-right'>" + gig.feeEur + "</td>" +
+        "<td class='text-right'>" + gig.feePPEur + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
         "<td>" +
         "<button type='button' " +
@@ -130,6 +131,7 @@ gigGet = (ctl) => {
     $("#gEmail").val(gig.performer.email);
     $("#gPhone").val(gig.performer.phone);
     $("#feeEur").val(gig.feeEur);
+    $("#feePPEur").val(gig.feePPEur);
     $("#sSeats").val(gig.startSeats);
     gigOpenForm()
   }
@@ -200,6 +202,7 @@ gigUpdateClick = () => {
       gig.performer.phone = $("#gPhone").val();
       gig.venue = $("#gAddress").val();
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
+      gig.feePPEur = parseFloat(($("#feePPEur").val())).toFixed(2)
       //console.log(gig.feeEur)
       if ($("#gigUpdateButton").text().trim() == "Hinzufügen") {
         gigAdd(gig);
@@ -220,6 +223,7 @@ gigUpdate = (gig) => {
   data.performer = gig.performer
   data.venue = gig.venue
   data.feeEur = gig.feeEur
+  data.feePPEur = gig.feePPEur
 
   // Call Web API to update gig
   $.ajax({
@@ -267,6 +271,7 @@ gigAdd = (gig) => {
   data.performer = gig.performer
   data.venue = gig.venue
   data.feeEur = gig.feeEur
+  data.feePPEur = gig.feePPEur
 
   // Call Web API to add a new gig
   $.ajax({
@@ -319,7 +324,7 @@ addClick = () => {
 // Send Paypal-List with sold Tickets
 function gigSendList(ctl) {
   $(this).blur();
-  if (confirm("Sind Sie sicher, dass Sie dem Haus eine email schicken wollen?")){
+  if (confirm("Sind Sie sicher, dass Sie dem Gastegeber eine Benachrichtigung schicken wollen?")){
     const token = window.localStorage.getItem('token');
 
     const id = $(ctl).data("id");
@@ -406,6 +411,7 @@ gigFormClear = () =>  {
   $("#gAddress").empty();
   $("#sSeats").val("");
   $("#feeEur").val("");
+  $("#feePPEur").val("");
   gigCloseForm()
 }
 
