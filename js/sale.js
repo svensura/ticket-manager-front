@@ -211,7 +211,7 @@ console.log(data)
 function buyClick() {
   const amount = $("#amount").val();
   $(this).blur();
-    if (confirm(`Möchten Sie ${amount} Ticket` + `${amount<0 ? '' : '(s)' }` +  `verkaufen?`)){
+    if (confirm(`Möchten Sie ${amount} Ticket` + `${amount<0 ? '' : '(s)' }` +  ` verkaufen?`)){
       gigBuy(amount)
     }   
   
