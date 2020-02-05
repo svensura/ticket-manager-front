@@ -108,7 +108,7 @@ drop = (gigs) => {
         `</button>` + 
         '</div>';
       var colorString = ''
-      if (gig.startSeats - gig.soldSeats <= 0) {
+      if (gig.startSeats - gig.soldSeats <= -1) {
         colorString = '/images/redHouse.png'
       } else if ((gig.startSeats - gig.soldSeats) / gig.startSeats < 0.5) {
         colorString = '/images/yellowHouse.png'
