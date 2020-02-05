@@ -191,7 +191,7 @@ console.log(data)
     ,
     success: () => {
       //alert(`You successfully ${amount<0?'refunded ' + (amount * -1):'bought ' + amount} ticket ${amount<0?'':'(s)'}`)
-      alert(`Sie haben erfolgreich ${amount<0 ? ((amount * -1) + ' Ticket zurückgegenommen!') : (amount + 'Ticket' + `${amount<2 ? '' : '(s)' }` + 'verkauft!') }`)
+      alert(`Sie haben erfolgreich ${amount<0 ? ((amount * -1) + ' Ticket zurückgegenommen!') : (amount + ' Ticket' + `${amount<2 ? '' : '(s)' }` + 'verkauft!') }`)
       location.reload();
     },
     error: (request, message, error) => {
