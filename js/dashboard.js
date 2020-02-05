@@ -110,10 +110,12 @@ drop = (gigs) => {
       var colorString = ''
       if (gig.startSeats - gig.soldSeats <= 20) {
         colorString = '/images/redHouse.png'
-      } else if ((gig.startSeats - gig.soldSeats) / gig.startSeats < 0.5) {
-        colorString = '/images/yellowHouse.png'
-      } else {
-        colorString = '/images/greenHouse.png'
+      } else { 
+        if ((gig.startSeats - gig.soldSeats) / gig.startSeats < 0.5) {
+          colorString = '/images/yellowHouse.png'
+        } else {
+          colorString = '/images/greenHouse.png'
+        }  
       }
 
       addMarkerWithTimeout(newLatLng, i * 200, `Haus Nr. ${gig.houseNo}`, contentString, colorString);
