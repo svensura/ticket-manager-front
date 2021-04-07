@@ -1,0 +1,23 @@
+{
+  "name": "ticket-manager-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node webserver.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svensura/ticket-manager-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svensura/ticket-manager-front/issues"
+  },
+  "homepage": "https://github.com/svensura/ticket-manager-front#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
