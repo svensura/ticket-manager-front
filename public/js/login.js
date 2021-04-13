@@ -1,6 +1,6 @@
 $(document).ready(() => {
-    //const API_URL = 'http://localhost:3001'
-    const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+    const API_URL = 'http://localhost:3001'
+    //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
     formClear();
     
     $("#but_submit").click(() => {
