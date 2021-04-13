@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Literaturnacht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+  
+  <link rel="stylesheet" href="../css/popup.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/disableLink.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+  <script src="../js/libs/moment.js"></script>
+
+  <script src="../js/libs/mustache.js"></script>
+
+  <script src="../js/libs/deparam.js"></script>
+
+  <script src="../js/gigs.js"></script>
+
+  <script src="../js/commonFunctions.js"></script>
+
+</head>
+
+<body>
+  <input type="hidden" id="storeid" value="0" />
+  
+  <nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="dashboard.html">Übersicht</a></li>
+        <li><a href="users.html">Benutzer</a></li>
+        <li><a href="venues.html">Häuser</a></li>
+        <li class="active"><a href="gigs.html">Lesungen</a></li>
+        <li><a class="isDisabled" href="sale.html">Verkauf</a></li>
+       <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+  
+
+  <div class="container">
+    <div id="table">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Lesungen</h2>
+      </div>
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-primary" onclick="gigOpenForm();">
+          Hinzufügen
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10">
+        <table id="gigTable" class="table table-bordered
+                    table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Bearbeiten</th>
+              <th>Nr.</th>
+              <th>Titel</th>
+              <th>Gast</th>
+              <th>Haus</th>
+              <th>Preis in €</th>
+              <th>PayPal Preis in €</th>
+              <th class="text-center">Tickets übrig</th>
+              <th class="text-center">Paypal-Liste</th>
+              <th>Entfernen</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="col-xs-12">
+          <button type="button" id="sendListButton" class="btn btn-primary"  onclick="sendSumList();">
+              Verkaufs-Zusammenfassung an mich senden
+            </button>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="form-popup" id="gigForm">
+      <div class="container">
+        <div class="form-field">
+          <label for="houseNo">Nr.</label>
+          <input type="text" id="houseNo" class="form-control" autofocus/>
+        </div>
+        <div class="form-field">
+          <label for="titlet">Titel</label>
+          <input type="text" id="title" class="form-control" />
+        </div>
+        <div class="form-field">
+            <label for="gName">Gast</label>
+            <input type="text" id="gName" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gEmail">Email</label>
+          <input type="text" id="gEmail" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gPhone">Telefon</label>
+          <input type="text" id="gPhone" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="gAddress">Haus</label>
+          <select id="gAddress" class="form-control" >
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="feeEur">Preis</label>
+          <input type="text" id="feeEur" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="feeEur">PayPal Preis</label>
+          <input type="text" id="feePPEur" class="form-control" />
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" id="gigUpdateButton" class="btn btn-primary" onclick="gigUpdateClick();">
+              Hinzufügen
+            </button>
+            <button type="button" id="gigCloseButton" class="btn btn-primary" onclick="gigFormClear();">
+              Zurück
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+<p></p>

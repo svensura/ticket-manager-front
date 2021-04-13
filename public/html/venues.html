@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Literaturnacht</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+  
+  <link rel="stylesheet" href="../css/popup.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/disableLink.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+  <script src="../js/libs/moment.js"></script>
+
+  <script src="js/libs/mustache.js"></script>
+
+  <script src="../js/libs/deparam.js"></script>
+
+  <script src="../js/venues.js"></script>
+
+  <script src="../js/commonFunctions.js"></script>
+</head>
+
+<body>
+  <input type="hidden" id="storeid" value="0" />
+  
+  <nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Große Kiesau Literaturnacht</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="dashboard.html">Übersicht</a></li>
+        <li><a href="users.html">Benutzer</a></li>
+        <li class="active"><a href="venues.html">Häuser</a></li>
+        <li><a href="gigs.html">Lesungen</a></li>
+        <li><a class="isDisabled" href="sale.html">Verkauf</a></li>
+        <li class="pointer"><a onclick="logoutClicked(false)" >Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="table">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>Häuser</h2>
+      </div>
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-primary" onclick="venueOpenForm();">
+          Hinzufügen
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10">
+        <table id="venueTable" class="table table-bordered
+                    table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>Bearbeiten</th>
+              <th>Adresse</th>
+              <th>Kontakt</th>
+              <th>Plätze</th>
+              <th>Aktiv</th>
+              <th>Entfernen</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    </div>
+    
+    <div class="form-popup" id="venueForm">
+      <div class="container">
+        <div class="form-field">
+          <label for="address">Adresse</label>
+          <input type="text" id="address" class="form-control" autofocus/>
+        </div>
+        <div class="form-field">
+          <label for="contact">Name</label>
+          <input type="text" id="cName" class="form-control" />
+        </div>
+        <div class="form-field">
+            <label for="contact">Email</label>
+            <input type="text" id="cEmail" class="form-control" />
+        </div>
+        <div class="form-field">
+            <label for="contact">Telefon</label>
+            <input type="text" id="cPhone" class="form-control" />
+          </div>
+        <div class="form-field">
+          <label for="seats">Plätze</label>
+          <input type="text" id="seats" class="form-control" />
+        </div>
+        <div class="form-field">
+          <label for="active">Aktiv</label>
+          <input type="checkbox" id="activeBox"/>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" id="venueUpdateButton" class="btn btn-primary" onclick="venueUpdateClick();">
+              Hinzufügen
+            </button>
+            <button type="button" id="venueCloseButton" class="btn btn-primary" onclick="venueFormClear();">
+              Zurück
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+</body>
+
+</html>
+
+<p></p>
