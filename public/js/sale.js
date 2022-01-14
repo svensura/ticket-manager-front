@@ -231,7 +231,7 @@ vendorListEmail = () => {
       "Authorization": `Bearer ${token}`,
     },
     success: () => {
-
+      console.log('POSTED EMAIL REQUEST')
    },
     error: (request, message, error) => {
       handleException(request, message, error);

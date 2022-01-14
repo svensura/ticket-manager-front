@@ -29,7 +29,7 @@ function logoutClicked(isVendor) {
       "processData": false,
       "data": '',
         success: () => {
-          window.location = "index.html"
+          window.location = "/"
         },
         error: (request, message, error) => {
           handleException(request, message, error);
