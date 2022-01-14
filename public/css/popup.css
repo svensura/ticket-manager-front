@@ -20,9 +20,7 @@
   cursor: pointer;
 }
 
-li.pointer {
-  cursor: pointer
-}
+
 
 .modal {
   display: none; /* Hidden by default */
