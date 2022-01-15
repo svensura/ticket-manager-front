@@ -1,6 +1,4 @@
 $(document).ready(async () => {
-  const API_URL = 'http://localhost:3001'
-  //const API_URL = 'https://sura-ticket-manager.herokuapp.com'
 
 
   var mapWaitCount = 0;
@@ -32,6 +30,7 @@ $(document).ready(async () => {
   // take focus away
   document.addEventListener('click', (e) => { if (document.activeElement.toString() == '[object HTMLButtonElement]') { document.activeElement.blur(); } });
 });
+
 
 
 const markersList = () => {
