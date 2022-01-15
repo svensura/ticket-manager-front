@@ -1,13 +1,10 @@
 $(document).ready(function () {
-  //const API_URL = 'http://localhost:3001'
-  const API_URL = 'https://sura-ticket-manager.herokuapp.com'
+
   gigsList();
 
   // take focus away
   document.addEventListener('click', function(e) { if(document.activeElement.toString() == '[object HTMLButtonElement]'){ document.activeElement.blur(); } });
 });
-
-
 
 
 // GIG_FUNCTIOONS
