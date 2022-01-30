@@ -90,13 +90,13 @@ gigBuildTableRow = (gig) => {
          "</button>" +
          "</td >" + 
         "<td>" +
-        ((gig.cancelled) ? "<button type='button' disbaled " : "<button type='button' ") +
+        ((gig.cancelled || gig.startSeats - gig.soldSeats < 1) ? "<button type='button' disbaled " : "<button type='button' ") +
         "onclick='gigGetBuy(this);' " +
         "class='" + 
-        ((gig.cancelled) ? "'btn btn-default' disabled = 'disabled'" : 'btn btn-default') +
+        ((gig.cancelled || gig.startSeats - gig.soldSeats < 1)) ? "'btn btn-default' disabled = 'disabled'" : 'btn btn-default') +
         "data-id='" + gig._id + "'>" +
         "<span class='" + 
-        ((gig.cancelled) ? 'glyphicon glyphicon-remove' : 'glyphicon glyphicon-shopping-cart') + "' />" + 
+        ((gig.cancelled || gig.startSeats - gig.soldSeats < 1)) ? 'glyphicon glyphicon-remove' : 'glyphicon glyphicon-shopping-cart') + "' />" + 
         "</button>" +
         "</td>" +
         "<td>" +
