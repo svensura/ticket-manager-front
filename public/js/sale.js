@@ -89,15 +89,17 @@ gigBuildTableRow = (gig) => {
         ((gig.cancelled) ? 'glyphicon glyphicon-thumbs-down' : 'glyphicon glyphicon-thumbs-up') + "' />" +
          "</button>" +
          "</td >" + 
-        "<td>" +
-        ((gig.cancelled || (gig.startSeats - gig.soldSeats < 1)) ? "<button type='button' disbaled " : "<button type='button' ") +
-        "onclick='gigGetBuy(this);' " +
-        "class='" + 
-        ((gig.cancelled || (gig.startSeats - gig.soldSeats < 1)) ? "'btn btn-default' disabled = 'disabled'" : 'btn btn-default') +
+        "<td>" + 
+        ((gig.cancelled || (gig.startSeats - gig.soldSeats < 1)) ? "<button type='button' disabled" +
+        "class='btn btn-default' disabled = 'disabled'" +
         "data-id='" + gig._id + "'>" +
-        "<span class='" + 
-        ((gig.cancelled || (gig.startSeats - gig.soldSeats < 1)) ? 'glyphicon glyphicon-remove' : 'glyphicon glyphicon-shopping-cart') + "' />" + 
-        "</button>" +
+        "<span class='glyphicon glyphicon-remove' />" +
+        "</button>" : "<button type='button' " +
+        "onclick='gigGetBuy(this);' " +
+        "class='btn btn-default' " +
+        "data-id='" + gig._id + "'>" +
+        "<span class='glyphicon glyphicon-shopping-cart' />" +
+        "</button>") 
         "</td>" +
         "<td>" +
         "<button type='button' " +
