@@ -99,7 +99,7 @@ gigBuildTableRow = (gig) => {
         "class='btn btn-default' " +
         "data-id='" + gig._id + "'>" +
         "<span class='glyphicon glyphicon-shopping-cart' />" +
-        "</button>") 
+        "</button>") +
         "</td>" +
         "<td>" +
         "<button type='button' " +
