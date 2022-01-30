@@ -91,7 +91,8 @@ gigBuildTableRow = (gig) => {
          "</td >" + 
         "<td>" + 
         ((gig.cancelled || (gig.startSeats - gig.soldSeats < 1)) ? "<button type='button' disabled" +
-        "class='btn btn-default' disabled = 'disabled'" +
+        "class='btn btn-default' disabled = 'disabled' style='background-color:red;'" +
+
         "data-id='" + gig._id + "'>" +
         "<span class='glyphicon glyphicon-remove' />" +
         "</button>" : "<button type='button' " +
