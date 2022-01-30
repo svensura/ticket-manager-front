@@ -85,7 +85,9 @@ gigBuildTableRow = (gig) => {
         "<td>" + 
         "<button type='button' disbabled " +
           "class='btn btn-default' disabled = 'disabled'>" +
-          ((gig.cancelled) ? "<span class='glyphicon glyphicon-thumbs-down' style='background-color:red;' />" : "<span class='glyphicon glyphicon-thumbs-up' />") +
+          ((gig.cancelled) ? "<button type='button' disbabled " +
+          "class='btn btn-default' disabled = 'disabled' style='background-color:powderblue;' > <span class='glyphicon glyphicon-thumbs-down' />" : "<button type='button' disbabled " +
+           "<span class='glyphicon glyphicon-thumbs-up' />") +
          "</button>" +
          "</td >" + 
         "<td>" + 
