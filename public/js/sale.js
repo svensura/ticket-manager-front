@@ -97,7 +97,6 @@ gigBuildTableRow = (gig) => {
         "data-id='" + gig._id + "'>" +
         "<span class='" + 
         ((gig.cancelled) ? 'glyphicon glyphicon-remove' : 'glyphicon glyphicon-shopping-cart') + "' />" + 
-        "<span class='glyphicon glyphicon-shopping-cart' />" +
         "</button>" +
         "</td>" +
         "<td>" +
