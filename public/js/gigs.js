@@ -69,6 +69,13 @@ gigBuildTableRow = (gig) => {
         "<td class='text-right'>" + gig.feeEur + "</td>" +
         "<td class='text-right'>" + gig.feePPEur + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
+        "<td>" + 
+        "<button type='button' disbabled " +
+          "class='btn btn-default' disabled = 'disabled'>" +
+          "<span class='" + 
+        ((gig.cancelled) ? 'glyphicon glyphicon-thumbs-down' : 'glyphicon glyphicon-thumbs-up') + "' />" +
+         "</button>" +
+         "</td >" + 
         "<td>" +
         "<button type='button' " +
         "onclick='gigSendList(this);' " +
@@ -130,6 +137,7 @@ gigGet = (ctl) => {
     $("#feeEur").val(gig.feeEur);
     $("#feePPEur").val(gig.feePPEur);
     $("#sSeats").val(gig.startSeats);
+    $("#cancelled").val(gig.cancelled);
     gigOpenForm()
   }
 
@@ -200,6 +208,7 @@ gigUpdateClick = () => {
       gig.venue = $("#gAddress").val();
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
       gig.feePPEur = parseFloat(($("#feePPEur").val())).toFixed(2)
+      gig.cancelled = $('#cancelledBox').prop('checked');
       //console.log(gig.feeEur)
       if ($("#gigUpdateButton").text().trim() == "Hinzufügen") {
         gigAdd(gig);
@@ -221,6 +230,7 @@ gigUpdate = (gig) => {
   data.venue = gig.venue
   data.feeEur = gig.feeEur
   data.feePPEur = gig.feePPEur
+  data.cancelled = gig.cancelled
 
   // Call Web API to update gig
   $.ajax({
@@ -269,6 +279,7 @@ gigAdd = (gig) => {
   data.venue = gig.venue
   data.feeEur = gig.feeEur
   data.feePPEur = gig.feePPEur
+  data.cancelled = gig.cancelled
 
   // Call Web API to add a new gig
   $.ajax({
@@ -409,6 +420,7 @@ gigFormClear = () =>  {
   $("#sSeats").val("");
   $("#feeEur").val("");
   $("#feePPEur").val("");
+  $("#cancelledBox").prop('checked', false);
   gigCloseForm()
 }
 

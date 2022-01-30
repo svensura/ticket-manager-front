@@ -82,11 +82,21 @@ gigBuildTableRow = (gig) => {
         "<td>" + gig.performer.name + "</td>" +
         "<td>" + gig.venue.address + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
+        "<td>" + 
+        "<button type='button' disbabled " +
+          "class='btn btn-default' disabled = 'disabled'>" +
+          "<span class='" + 
+        ((gig.cancelled) ? 'glyphicon glyphicon-thumbs-down' : 'glyphicon glyphicon-thumbs-up') + "' />" +
+         "</button>" +
+         "</td >" + 
         "<td>" +
-        "<button type='button' " +
+        ((gig.cancelled) ? "<button type='button' disbaled " : "<button type='button' ") +
         "onclick='gigGetBuy(this);' " +
-        "class='btn btn-default' " +
+        "class='" + 
+        ((gig.cancelled) ? "'btn btn-default' disabled = 'disabled'" : 'btn btn-default') +
         "data-id='" + gig._id + "'>" +
+        "<span class='" + 
+        ((gig.cancelled) ? 'glyphicon glyphicon-remove' : 'glyphicon glyphicon-shopping-cart') + "' />" + 
         "<span class='glyphicon glyphicon-shopping-cart' />" +
         "</button>" +
         "</td>" +
