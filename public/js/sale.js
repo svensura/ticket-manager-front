@@ -83,9 +83,7 @@ gigBuildTableRow = (gig) => {
         "<td>" + gig.venue.address + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
         "<td>" + 
-        "<button type='button' disbabled " +
-          "class='btn btn-default' disabled = 'disabled'>" +
-          ((gig.cancelled) ? "<button type='button' disbabled " +
+        ((gig.cancelled) ? "<button type='button' disbabled " +
           "class='btn btn-default' disabled = 'disabled' style='background-color:red;' > <span class='glyphicon glyphicon-thumbs-down' />" : "<button type='button' disbabled " +
            "<span class='glyphicon glyphicon-thumbs-up' />") +
          "</button>" +
