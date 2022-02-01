@@ -137,7 +137,7 @@ gigGet = (ctl) => {
     $("#feeEur").val(gig.feeEur);
     $("#feePPEur").val(gig.feePPEur);
     $("#sSeats").val(gig.startSeats);
-    $("#cancelled").val(gig.cancelled);
+    $("#cancelledBox").val(gig.cancelled);
     gigOpenForm()
   }
 
