@@ -137,7 +137,7 @@ gigGet = (ctl) => {
     $("#feeEur").val(gig.feeEur);
     $("#feePPEur").val(gig.feePPEur);
     $("#sSeats").val(gig.startSeats);
-    $("#cancelledBox").val(gig.cancelled);
+    $("#cancelledBox").prop('checked', gig.cancelled);
     gigOpenForm()
   }
 
