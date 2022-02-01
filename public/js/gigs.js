@@ -209,7 +209,6 @@ gigUpdateClick = () => {
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
       gig.feePPEur = parseFloat(($("#feePPEur").val())).toFixed(2)
       gig.cancelled = $('#cancelledBox').prop('checked');
-      //console.log(gig.feeEur)
       if ($("#gigUpdateButton").text().trim() == "Hinzufügen") {
         gigAdd(gig);
       }
