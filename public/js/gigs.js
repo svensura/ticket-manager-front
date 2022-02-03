@@ -67,6 +67,7 @@ gigBuildTableRow = (gig) => {
         "<td>" + gig.performer.name + "</td>" +
         "<td>" + gig.venue.address + "</td>" +
         "<td class='text-right'>" + gig.feeEur + "</td>" +
+        "<td class='text-right'>" + gig.feeStudentEur + "</td>" +
         "<td class='text-right'>" + gig.feePPEur + "</td>" +
         "<td class='text-right'>" + (gig.startSeats - gig.soldSeats) + "</td>" +
         "<td>" + 
@@ -88,7 +89,7 @@ gigBuildTableRow = (gig) => {
         "onclick='gigDelete(this);' " +
         "class='btn btn-default' " +
         "data-id='" + gig._id + "'>" +
-        "<span class='glyphicon glyphicon-remove' />" +
+        "<span class='glyphicon glyphicon-ban-circle' />" +
         "</button>" +
       "</td>" +
     "</tr>" 
@@ -135,6 +136,7 @@ gigGet = (ctl) => {
     $("#gEmail").val(gig.performer.email);
     $("#gPhone").val(gig.performer.phone);
     $("#feeEur").val(gig.feeEur);
+    $("#feeStudent").val(gig.feeStudentEur);
     $("#feePPEur").val(gig.feePPEur);
     $("#sSeats").val(gig.startSeats);
     $("#cancelledBox").prop('checked', gig.cancelled);
@@ -207,6 +209,7 @@ gigUpdateClick = () => {
       gig.performer.phone = $("#gPhone").val();
       gig.venue = $("#gAddress").val();
       gig.feeEur = parseFloat(($("#feeEur").val())).toFixed(2)
+      gig.feeStudentEur = parseFloat(($("#feeStudentEur").val())).toFixed(2)
       gig.feePPEur = parseFloat(($("#feePPEur").val())).toFixed(2)
       gig.cancelled = $('#cancelledBox').prop('checked');
       if ($("#gigUpdateButton").text().trim() == "Hinzufügen") {
@@ -228,6 +231,7 @@ gigUpdate = (gig) => {
   data.performer = gig.performer
   data.venue = gig.venue
   data.feeEur = gig.feeEur
+  data.feeStudentEur = gig.feeStudentEur
   data.feePPEur = gig.feePPEur
   data.cancelled = gig.cancelled
 
@@ -277,6 +281,7 @@ gigAdd = (gig) => {
   data.performer = gig.performer
   data.venue = gig.venue
   data.feeEur = gig.feeEur
+  data.feeStudentEur = gig.feeStudentEur
   data.feePPEur = gig.feePPEur
   data.cancelled = gig.cancelled
 
@@ -418,6 +423,7 @@ gigFormClear = () =>  {
   $("#gAddress").empty();
   $("#sSeats").val("");
   $("#feeEur").val("");
+  $("#feeStudent").val("");
   $("#feePPEur").val("");
   $("#cancelledBox").prop('checked', false);
   gigCloseForm()
