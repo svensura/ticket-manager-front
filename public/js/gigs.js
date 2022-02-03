@@ -89,7 +89,7 @@ gigBuildTableRow = (gig) => {
         "onclick='gigDelete(this);' " +
         "class='btn btn-default' " +
         "data-id='" + gig._id + "'>" +
-        "<span class='glyphicon glyphicon-ban-circle' />" +
+        "<span class='glyphicon glyphicon-remove' />" +
         "</button>" +
       "</td>" +
     "</tr>" 
